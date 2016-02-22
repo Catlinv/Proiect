@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view = [[UIView alloc] initWithFrame:self.view.frame];
+    //self.view = [[UIView alloc] initWithFrame:self.view.frame];
     self.view.backgroundColor = [UIColor clearColor];
     [self addOptionsTableBlurView];
     [self addTableView];
@@ -34,9 +34,10 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    CGRect frame = self.tableView.frame;
+    frame.origin.x = 0.0;
+    
     [UIView animateWithDuration:1.05 animations:^{
-        CGRect frame = self.tableView.frame;
-        frame.origin.x = 0.0;
         self.tableView.frame = frame;
         self.blurEffectView.alpha = 1.0;
     }];
@@ -131,9 +132,10 @@
 
 - (void)tapOnBlur {
     
+    CGRect frame = self.tableView.frame;
+    frame.origin.x = -frame.size.width;
+    
     [UIView animateWithDuration:1.05 animations:^{
-        CGRect frame = self.tableView.frame;
-        frame.origin.x = -frame.size.width;
         self.tableView.frame = frame;
         self.blurEffectView.alpha = 0.0;
     } completion:^(BOOL finished) {

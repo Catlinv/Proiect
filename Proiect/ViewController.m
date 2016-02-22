@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "OptionsTableViewController.h"
+#import "QuestionBaseViewController.h"
 
 const CGFloat kMinImageHeight = 64.0;
 
@@ -80,8 +81,12 @@ const CGFloat kMinImageHeight = 64.0;
     [self addChildViewController:viewControllerToPresent];
     [viewControllerToPresent didMoveToParentViewController:self];
     
+    [viewControllerToPresent.view layoutIfNeeded];
+    
     [UIView animateWithDuration:1.0 animations:^{
         viewControllerToPresent.view.frame = viewFinal;
+        //[viewControllerToPresent.view setNeedsUpdateConstraints];
+        [viewControllerToPresent.view layoutIfNeeded];
     }];
 }
 
@@ -144,10 +149,10 @@ const CGFloat kMinImageHeight = 64.0;
             break;
         case 1: {
             //Blue
-            OptionsTableViewController *optionsMenu = [[OptionsTableViewController alloc] init];
+            QuestionBaseViewController *questionMenu = [[QuestionBaseViewController alloc] init];
             
-            optionsMenu.view.frame = self.view.bounds;
-            [self presentViewController:optionsMenu forCellAtIndexPath:indexPath];
+            questionMenu.view.frame = self.view.bounds;
+            [self presentViewController:questionMenu forCellAtIndexPath:indexPath];
             
             break;
         }

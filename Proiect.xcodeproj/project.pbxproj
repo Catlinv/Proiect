@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */; };
+		58E67EE21C7B5CB1002EE780 /* QuestionBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */; };
+		58E67EE41C7B603F002EE780 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE31C7B603F002EE780 /* backButton.png */; };
 		5970514E1C1F1228000767D9 /* OptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5970514C1C1F1228000767D9 /* OptionsTableViewController.m */; };
 		CEDF09DB1C10B227001FFA37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF09DA1C10B227001FFA37 /* main.m */; };
 		CEDF09DE1C10B227001FFA37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF09DD1C10B227001FFA37 /* AppDelegate.m */; };
@@ -37,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58E67EDE1C7B5420002EE780 /* QuestionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionBaseViewController.h; path = Questions/QuestionBaseViewController.h; sourceTree = "<group>"; };
+		58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionBaseViewController.m; path = Questions/QuestionBaseViewController.m; sourceTree = "<group>"; };
+		58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionBaseViewController.xib; sourceTree = "<group>"; };
+		58E67EE31C7B603F002EE780 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		5970514B1C1F1228000767D9 /* OptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewController.h; sourceTree = "<group>"; };
 		5970514C1C1F1228000767D9 /* OptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTableViewController.m; sourceTree = "<group>"; };
 		CEDF09D61C10B227001FFA37 /* Proiect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proiect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58E67EDD1C7B524F002EE780 /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				58E67EDE1C7B5420002EE780 /* QuestionBaseViewController.h */,
+				58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */,
+				58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */,
+			);
+			name = Questions;
+			sourceTree = "<group>";
+		};
 		CEDF09CD1C10B227001FFA37 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +129,7 @@
 				CEDF09E01C10B227001FFA37 /* ViewController.m */,
 				5970514B1C1F1228000767D9 /* OptionsTableViewController.h */,
 				5970514C1C1F1228000767D9 /* OptionsTableViewController.m */,
+				58E67EDD1C7B524F002EE780 /* Questions */,
 				CEDF09E21C10B227001FFA37 /* Main.storyboard */,
 				CEDF09E51C10B227001FFA37 /* Assets.xcassets */,
 				CEDF09E71C10B227001FFA37 /* LaunchScreen.storyboard */,
@@ -125,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDF0A0C1C10B8A4001FFA37 /* startImg.jpg */,
+				58E67EE31C7B603F002EE780 /* backButton.png */,
 				CEDF09DA1C10B227001FFA37 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -254,6 +273,8 @@
 				CEDF09E91C10B227001FFA37 /* LaunchScreen.storyboard in Resources */,
 				CEDF0A0D1C10B8A4001FFA37 /* startImg.jpg in Resources */,
 				CEDF09E61C10B227001FFA37 /* Assets.xcassets in Resources */,
+				58E67EE21C7B5CB1002EE780 /* QuestionBaseViewController.xib in Resources */,
+				58E67EE41C7B603F002EE780 /* backButton.png in Resources */,
 				CEDF09E41C10B227001FFA37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */,
 				CEDF09E11C10B227001FFA37 /* ViewController.m in Sources */,
 				CEDF09DE1C10B227001FFA37 /* AppDelegate.m in Sources */,
 				5970514E1C1F1228000767D9 /* OptionsTableViewController.m in Sources */,
