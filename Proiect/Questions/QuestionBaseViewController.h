@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Question.h"
+
 @interface QuestionBaseViewController : UIViewController
 
-@property (weak, nonatomic)  *question;
+@property (weak, nonatomic)  Question *question;
 
 @end

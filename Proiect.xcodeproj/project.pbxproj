@@ -16,6 +16,9 @@
 		58E91A371C887FB30072859B /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E91A311C887FB30072859B /* Question.m */; };
 		58E91A381C887FB30072859B /* Option+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E91A331C887FB30072859B /* Option+CoreDataProperties.m */; };
 		58E91A391C887FB30072859B /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E91A351C887FB30072859B /* Option.m */; };
+		593285461C9D857F003D0425 /* PROQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 593285451C9D857F003D0425 /* PROQuestion.m */; };
+		5932854A1C9D88C8003D0425 /* PROOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 593285491C9D88C8003D0425 /* PROOption.m */; };
+		5932854D1C9D8E02003D0425 /* PROUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5932854C1C9D8E02003D0425 /* PROUserDefaults.m */; };
 		5970514E1C1F1228000767D9 /* OptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5970514C1C1F1228000767D9 /* OptionsTableViewController.m */; };
 		CEDF09DB1C10B227001FFA37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF09DA1C10B227001FFA37 /* main.m */; };
 		CEDF09DE1C10B227001FFA37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF09DD1C10B227001FFA37 /* AppDelegate.m */; };
@@ -61,6 +64,13 @@
 		58E91A331C887FB30072859B /* Option+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Option+CoreDataProperties.m"; sourceTree = "<group>"; };
 		58E91A341C887FB30072859B /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
 		58E91A351C887FB30072859B /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
+		592554761C9D9603000C3642 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		593285441C9D857F003D0425 /* PROQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROQuestion.h; sourceTree = "<group>"; };
+		593285451C9D857F003D0425 /* PROQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROQuestion.m; sourceTree = "<group>"; };
+		593285481C9D88C8003D0425 /* PROOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROOption.h; sourceTree = "<group>"; };
+		593285491C9D88C8003D0425 /* PROOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROOption.m; sourceTree = "<group>"; };
+		5932854B1C9D8E02003D0425 /* PROUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROUserDefaults.h; sourceTree = "<group>"; };
+		5932854C1C9D8E02003D0425 /* PROUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROUserDefaults.m; sourceTree = "<group>"; };
 		5970514B1C1F1228000767D9 /* OptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewController.h; sourceTree = "<group>"; };
 		5970514C1C1F1228000767D9 /* OptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTableViewController.m; sourceTree = "<group>"; };
 		CEDF09D61C10B227001FFA37 /* Proiect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proiect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,19 +130,15 @@
 		58E91A181C8873FB0072859B /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				58E91A191C8874400072859B /* Question.xcdatamodeld */,
-				58E91A2E1C887FB30072859B /* Question+CoreDataProperties.h */,
-				58E91A2F1C887FB30072859B /* Question+CoreDataProperties.m */,
-				58E91A301C887FB30072859B /* Question.h */,
-				58E91A311C887FB30072859B /* Question.m */,
-				58E91A321C887FB30072859B /* Option+CoreDataProperties.h */,
-				58E91A331C887FB30072859B /* Option+CoreDataProperties.m */,
-				58E91A341C887FB30072859B /* Option.h */,
-				58E91A351C887FB30072859B /* Option.m */,
-				58E91A2B1C887EA50072859B /* CoreDataManager.h */,
-				58E91A2C1C887EA50072859B /* CoreDataManager.m */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		593285471C9D8585003D0425 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		CEDF09CD1C10B227001FFA37 = {
@@ -164,13 +170,32 @@
 				CEDF09E01C10B227001FFA37 /* ViewController.m */,
 				5970514B1C1F1228000767D9 /* OptionsTableViewController.h */,
 				5970514C1C1F1228000767D9 /* OptionsTableViewController.m */,
+				593285471C9D8585003D0425 /* Model */,
+				593285441C9D857F003D0425 /* PROQuestion.h */,
+				593285451C9D857F003D0425 /* PROQuestion.m */,
+				593285481C9D88C8003D0425 /* PROOption.h */,
+				593285491C9D88C8003D0425 /* PROOption.m */,
+				5932854B1C9D8E02003D0425 /* PROUserDefaults.h */,
+				5932854C1C9D8E02003D0425 /* PROUserDefaults.m */,
 				58E91A181C8873FB0072859B /* Core Data */,
+				58E91A191C8874400072859B /* Question.xcdatamodeld */,
+				58E91A2E1C887FB30072859B /* Question+CoreDataProperties.h */,
+				58E91A2F1C887FB30072859B /* Question+CoreDataProperties.m */,
+				58E91A301C887FB30072859B /* Question.h */,
+				58E91A311C887FB30072859B /* Question.m */,
+				58E91A321C887FB30072859B /* Option+CoreDataProperties.h */,
+				58E91A331C887FB30072859B /* Option+CoreDataProperties.m */,
+				58E91A341C887FB30072859B /* Option.h */,
+				58E91A351C887FB30072859B /* Option.m */,
+				58E91A2B1C887EA50072859B /* CoreDataManager.h */,
+				58E91A2C1C887EA50072859B /* CoreDataManager.m */,
 				58E67EDD1C7B524F002EE780 /* Questions */,
 				CEDF09E21C10B227001FFA37 /* Main.storyboard */,
 				CEDF09E51C10B227001FFA37 /* Assets.xcassets */,
 				CEDF09E71C10B227001FFA37 /* LaunchScreen.storyboard */,
 				CEDF09EA1C10B227001FFA37 /* Info.plist */,
 				CEDF09D91C10B227001FFA37 /* Supporting Files */,
+				592554761C9D9603000C3642 /* PrefixHeader.pch */,
 			);
 			path = Proiect;
 			sourceTree = "<group>";
@@ -336,7 +361,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5932854D1C9D8E02003D0425 /* PROUserDefaults.m in Sources */,
 				58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */,
+				593285461C9D857F003D0425 /* PROQuestion.m in Sources */,
 				58E91A1B1C8874400072859B /* Question.xcdatamodeld in Sources */,
 				58E91A391C887FB30072859B /* Option.m in Sources */,
 				CEDF09E11C10B227001FFA37 /* ViewController.m in Sources */,
@@ -346,6 +373,7 @@
 				CEDF09DE1C10B227001FFA37 /* AppDelegate.m in Sources */,
 				58E91A371C887FB30072859B /* Question.m in Sources */,
 				5970514E1C1F1228000767D9 /* OptionsTableViewController.m in Sources */,
+				5932854A1C9D88C8003D0425 /* PROOption.m in Sources */,
 				CEDF09DB1C10B227001FFA37 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +513,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Proiect/PrefixHeader.pch;
 				INFOPLIST_FILE = Proiect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Proiect;
@@ -497,6 +527,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Proiect/PrefixHeader.pch;
 				INFOPLIST_FILE = Proiect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Proiect;

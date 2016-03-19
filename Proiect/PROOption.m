@@ -1,18 +1,17 @@
 //
-//  Option.m
+//  PROOption.m
 //  Proiect
 //
-//  Created by webteam on 03/03/16.
+//  Created by OctavF on 19/03/16.
 //  Copyright © 2016 user. All rights reserved.
 //
 
-#import "Option.h"
+#import "PROOption.h"
 
-@implementation Option
+@implementation PROOption
 
--(void)fillOptionWithOption:(Option *)option{
+-(void)fillOptionWithOption:(PROOption *)option{
     self.answer = option.answer;
     self.isAnswer = option.isAnswer;
 }
-
 @end

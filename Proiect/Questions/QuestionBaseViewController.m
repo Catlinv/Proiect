@@ -7,9 +7,12 @@
 //
 
 #import "QuestionBaseViewController.h"
+#import "Question+CoreDataProperties.h"
+#import "PROQuestion.h"
 
-@interface QuestionBaseViewController ()
+@interface QuestionBaseViewController () <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *answerTextField;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
 @end
@@ -19,23 +22,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.answerTextField.delegate = self;
     self.view.backgroundColor = [UIColor blueColor];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.answerTextField becomeFirstResponder];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Private Methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)didAnswerCorrectly {
+    PROQuestion *tester =[PROQuestion new];
+    tester.name = @"Test";
+    
+    if ([[self.answerTextField.text lowercaseString]isEqualToString: [[tester returnAnswer] lowercaseString]])
+    {
+        tester.isSolved = @(YES);
+        return YES;   
+    }
+    return NO;
 }
-*/
+
+#pragma mark - UITextFieldDelefgateMethods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if([self didAnswerCorrectly]){
+        self.view.backgroundColor = [UIColor greenColor];
+        [textField resignFirstResponder];
+        PROUserDefaultsInstance.score++;
+        return YES;
+    }
+    self.view.backgroundColor = [UIColor redColor];
+    return NO;
+}
 
 #pragma mark - Actions
 

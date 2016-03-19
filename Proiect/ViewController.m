@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+// ViewController.m
 //  Proiect
 //
 //  Created by user on 03/12/15.
@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "OptionsTableViewController.h"
 #import "QuestionBaseViewController.h"
+//#import "PROUserDefaults.h"
 
 const CGFloat kMinImageHeight = 64.0;
 
@@ -27,6 +28,11 @@ const CGFloat kMinImageHeight = 64.0;
 
 @implementation ViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,6 +47,10 @@ const CGFloat kMinImageHeight = 64.0;
     frame.size.height = self.view.frame.size.height / 2.0;
     self.imageStart.frame = frame;
 //    self.imageStart.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
+    self.statsLabel.text = [NSString stringWithFormat:@"%li",(long)PROUserDefaultsInstance.score];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDefaultsValueChanged:) name:kPROUserDefaultsValueChangedNotification  object:nil];
 }
 
 - (IBAction)optionsButtonTapped:(id)sender {
@@ -161,6 +171,17 @@ const CGFloat kMinImageHeight = 64.0;
             break;
         default:
             break;
+    }
+}
+
+#pragma mark - Notifications
+
+- (void)userDefaultsValueChanged:(NSNotification *)notif {
+    NSString *valueName = [notif.userInfo objectForKey:kPROUserDefaultsValueNameKey];
+    
+    if ([valueName isEqualToString:kPROScore]) {
+        NSInteger newScore = [[notif.userInfo objectForKey:kPROUserDefaultsNewValueKey] integerValue];
+        self.statsLabel.text = [NSString stringWithFormat:@"%li",(long)newScore];
     }
 }
 

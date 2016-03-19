@@ -1,19 +1,19 @@
 //
-//  Question.m
+//  PROQuestion.m
 //  Proiect
 //
-//  Created by webteam on 03/03/16.
+//  Created by OctavF on 19/03/16.
 //  Copyright © 2016 user. All rights reserved.
 //
 
-#import "Question.h"
-#import "Option.h"
+#import "PROQuestion.h"
+#import "PROOption.h"
 
-@implementation Question
+@implementation PROQuestion
 
 // Insert code here to add functionality to your managed object subclass
 
-- (void) fillQuestionWithQuestion:(Question *)question{
+- (void) fillQuestionWithQuestion:(PROQuestion *)question{
     self.name = question.name;
     self.type = question.type;
     self.longitude = question.longitude;
@@ -26,13 +26,13 @@
 
 - (NSString*) returnAnswer {
     
-    Option *optiune = [Option new];
+    PROOption *optiune = [PROOption new];
     optiune.isAnswer = @(TRUE);
     optiune.answer = @"aaa";
     self.options = [NSSet setWithObject:optiune];
     
     __block NSString *result = nil;
-    [self.options enumerateObjectsUsingBlock:^(Option * _Nonnull obj, BOOL * _Nonnull stop) {
+    [self.options enumerateObjectsUsingBlock:^(PROOption * _Nonnull obj, BOOL * _Nonnull stop) {
         if ([obj.isAnswer boolValue] == TRUE)
             result = obj.answer;
     }];
