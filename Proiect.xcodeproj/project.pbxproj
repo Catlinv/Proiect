@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581989CE1CE0E52100C541B1 /* PROLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 581989CD1CE0E52100C541B1 /* PROLocationManager.m */; };
+		581989D01CE0E57700C541B1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581989CF1CE0E57700C541B1 /* CoreLocation.framework */; };
 		58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */; };
 		58E67EE21C7B5CB1002EE780 /* QuestionBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */; };
 		58E67EE41C7B603F002EE780 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE31C7B603F002EE780 /* backButton.png */; };
@@ -49,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		581989CC1CE0E52100C541B1 /* PROLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROLocationManager.h; sourceTree = "<group>"; };
+		581989CD1CE0E52100C541B1 /* PROLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROLocationManager.m; sourceTree = "<group>"; };
+		581989CF1CE0E57700C541B1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		58E67EDE1C7B5420002EE780 /* QuestionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionBaseViewController.h; path = Questions/QuestionBaseViewController.h; sourceTree = "<group>"; };
 		58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionBaseViewController.m; path = Questions/QuestionBaseViewController.m; sourceTree = "<group>"; };
 		58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionBaseViewController.xib; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				581989D01CE0E57700C541B1 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +123,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		581989CB1CE0E4E000C541B1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				581989CC1CE0E52100C541B1 /* PROLocationManager.h */,
+				581989CD1CE0E52100C541B1 /* PROLocationManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		581989D11CE0E5CB00C541B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				581989CF1CE0E57700C541B1 /* CoreLocation.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		58E67EDD1C7B524F002EE780 /* Questions */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +171,7 @@
 		593285471C9D8585003D0425 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				581989CB1CE0E4E000C541B1 /* Managers */,
 				593285441C9D857F003D0425 /* PROQuestion.h */,
 				593285451C9D857F003D0425 /* PROQuestion.m */,
 				593285481C9D88C8003D0425 /* PROOption.h */,
@@ -181,6 +205,7 @@
 		CEDF09D81C10B227001FFA37 /* Proiect */ = {
 			isa = PBXGroup;
 			children = (
+				581989D11CE0E5CB00C541B1 /* Frameworks */,
 				CEDF09DC1C10B227001FFA37 /* AppDelegate.h */,
 				CEDF09DD1C10B227001FFA37 /* AppDelegate.m */,
 				CEDF09DF1C10B227001FFA37 /* ViewController.h */,
@@ -363,6 +388,7 @@
 			files = (
 				5932854D1C9D8E02003D0425 /* PROUserDefaults.m in Sources */,
 				58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */,
+				581989CE1CE0E52100C541B1 /* PROLocationManager.m in Sources */,
 				593285461C9D857F003D0425 /* PROQuestion.m in Sources */,
 				58E91A1B1C8874400072859B /* Question.xcdatamodeld in Sources */,
 				58E91A391C887FB30072859B /* Option.m in Sources */,

@@ -11,8 +11,8 @@
 
 @interface QuestionBaseViewController () <UITextFieldDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextView *answerDescriptionTextView;
-@property (strong, nonatomic) IBOutlet UILabel *answerLabel;
+@property (weak, nonatomic) IBOutlet UITextView *answerDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 @property (weak, nonatomic) IBOutlet UITextField *answerTextField;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
