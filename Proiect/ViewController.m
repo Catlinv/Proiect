@@ -161,6 +161,16 @@ const CGFloat kMinImageHeight = 64.0;
             //Blue
             QuestionBaseViewController *questionMenu = [[QuestionBaseViewController alloc] init];
             
+            PROQuestion *tester =[PROQuestion new];
+            tester.name = @"Test?";
+            PROOption *optiune = [PROOption new];
+            optiune.isAnswer = @(TRUE);
+            optiune.answer = @"aaa";
+            tester.options = [NSSet setWithObject:optiune];
+            tester.extraInfo = @"This is just a test";
+            //NSArray *asdf = [tester.options allObjects];
+            //((PROOption*)[asdf objectAtIndex:0]).answer;
+            questionMenu.question = tester;
             questionMenu.view.frame = self.view.bounds;
             [self presentViewController:questionMenu forCellAtIndexPath:indexPath];
             

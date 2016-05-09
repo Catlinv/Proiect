@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionBaseViewController">
             <connections>
+                <outlet property="answerDescriptionTextView" destination="GE1-4m-UQf" id="6bD-3n-Qz3"/>
+                <outlet property="answerLabel" destination="ibn-1Z-osr" id="Zih-n3-Ie2"/>
                 <outlet property="answerTextField" destination="lQa-9X-HR4" id="D1y-vI-i95"/>
                 <outlet property="questionLabel" destination="B6V-JY-yDa" id="STo-mg-BC1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yzi-UU-MmI"/>
@@ -44,26 +46,48 @@
                     <rect key="frame" x="0.0" y="148" width="600" height="452"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQa-9X-HR4">
-                            <rect key="frame" x="20" y="80" width="560" height="30"/>
+                            <rect key="frame" x="20" y="50" width="560" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="9wN-O5-guJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
                         </textField>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-1Z-osr">
+                            <rect key="frame" x="279" y="56" width="42" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GE1-4m-UQf">
+                            <rect key="frame" x="20" y="130" width="560" height="302"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="lQa-9X-HR4" firstAttribute="top" secondItem="ErH-aW-426" secondAttribute="top" constant="80" id="EDG-Fa-0L4"/>
+                        <constraint firstItem="ibn-1Z-osr" firstAttribute="centerY" secondItem="lQa-9X-HR4" secondAttribute="centerY" id="3uJ-rv-mM5"/>
+                        <constraint firstItem="lQa-9X-HR4" firstAttribute="top" secondItem="ErH-aW-426" secondAttribute="top" constant="50" id="EDG-Fa-0L4"/>
+                        <constraint firstAttribute="trailing" secondItem="GE1-4m-UQf" secondAttribute="trailing" constant="20" id="It8-PX-5bf"/>
+                        <constraint firstItem="GE1-4m-UQf" firstAttribute="leading" secondItem="ErH-aW-426" secondAttribute="leading" constant="20" id="JKL-jZ-X8t"/>
+                        <constraint firstItem="ibn-1Z-osr" firstAttribute="centerY" secondItem="ErH-aW-426" secondAttribute="centerY" id="ON5-b0-8th"/>
+                        <constraint firstItem="GE1-4m-UQf" firstAttribute="top" secondItem="lQa-9X-HR4" secondAttribute="bottom" constant="50" id="OQ2-Ot-cdx"/>
                         <constraint firstItem="lQa-9X-HR4" firstAttribute="leading" secondItem="ErH-aW-426" secondAttribute="leading" constant="20" id="g0a-XF-Vo2"/>
                         <constraint firstAttribute="width" secondItem="ErH-aW-426" secondAttribute="height" multiplier="150:113" id="gTW-Jv-jbB"/>
+                        <constraint firstItem="ibn-1Z-osr" firstAttribute="centerX" secondItem="ErH-aW-426" secondAttribute="centerX" id="hP8-Dg-aCd"/>
+                        <constraint firstAttribute="bottom" secondItem="GE1-4m-UQf" secondAttribute="bottom" constant="20" id="mGF-cp-YNw"/>
                         <constraint firstAttribute="trailing" secondItem="lQa-9X-HR4" secondAttribute="trailing" constant="20" id="sUG-Fn-hjn"/>
                         <constraint firstAttribute="width" secondItem="ErH-aW-426" secondAttribute="height" multiplier="1:1" id="vDy-ji-OJG"/>
+                        <constraint firstItem="ibn-1Z-osr" firstAttribute="baseline" secondItem="lQa-9X-HR4" secondAttribute="baseline" id="xNs-wf-igc"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="gTW-Jv-jbB"/>
                             <exclude reference="vDy-ji-OJG"/>
+                            <exclude reference="ON5-b0-8th"/>
                         </mask>
                     </variation>
                 </view>
@@ -87,6 +111,7 @@
                     <exclude reference="t2Y-0x-AJX"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="186" y="416"/>
         </view>
     </objects>
     <resources>

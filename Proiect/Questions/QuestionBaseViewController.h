@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Question.h"
+#import "PROQuestion.h"
 
 @interface QuestionBaseViewController : UIViewController
 
-@property (weak, nonatomic)  Question *question;
+@property (strong, nonatomic)  PROQuestion *question;
 
 @end

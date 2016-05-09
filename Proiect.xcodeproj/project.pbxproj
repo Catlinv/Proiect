@@ -130,6 +130,17 @@
 		58E91A181C8873FB0072859B /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				58E91A191C8874400072859B /* Question.xcdatamodeld */,
+				58E91A2E1C887FB30072859B /* Question+CoreDataProperties.h */,
+				58E91A2F1C887FB30072859B /* Question+CoreDataProperties.m */,
+				58E91A301C887FB30072859B /* Question.h */,
+				58E91A311C887FB30072859B /* Question.m */,
+				58E91A321C887FB30072859B /* Option+CoreDataProperties.h */,
+				58E91A331C887FB30072859B /* Option+CoreDataProperties.m */,
+				58E91A341C887FB30072859B /* Option.h */,
+				58E91A351C887FB30072859B /* Option.m */,
+				58E91A2B1C887EA50072859B /* CoreDataManager.h */,
+				58E91A2C1C887EA50072859B /* CoreDataManager.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -137,6 +148,12 @@
 		593285471C9D8585003D0425 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				593285441C9D857F003D0425 /* PROQuestion.h */,
+				593285451C9D857F003D0425 /* PROQuestion.m */,
+				593285481C9D88C8003D0425 /* PROOption.h */,
+				593285491C9D88C8003D0425 /* PROOption.m */,
+				5932854B1C9D8E02003D0425 /* PROUserDefaults.h */,
+				5932854C1C9D8E02003D0425 /* PROUserDefaults.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -171,24 +188,7 @@
 				5970514B1C1F1228000767D9 /* OptionsTableViewController.h */,
 				5970514C1C1F1228000767D9 /* OptionsTableViewController.m */,
 				593285471C9D8585003D0425 /* Model */,
-				593285441C9D857F003D0425 /* PROQuestion.h */,
-				593285451C9D857F003D0425 /* PROQuestion.m */,
-				593285481C9D88C8003D0425 /* PROOption.h */,
-				593285491C9D88C8003D0425 /* PROOption.m */,
-				5932854B1C9D8E02003D0425 /* PROUserDefaults.h */,
-				5932854C1C9D8E02003D0425 /* PROUserDefaults.m */,
 				58E91A181C8873FB0072859B /* Core Data */,
-				58E91A191C8874400072859B /* Question.xcdatamodeld */,
-				58E91A2E1C887FB30072859B /* Question+CoreDataProperties.h */,
-				58E91A2F1C887FB30072859B /* Question+CoreDataProperties.m */,
-				58E91A301C887FB30072859B /* Question.h */,
-				58E91A311C887FB30072859B /* Question.m */,
-				58E91A321C887FB30072859B /* Option+CoreDataProperties.h */,
-				58E91A331C887FB30072859B /* Option+CoreDataProperties.m */,
-				58E91A341C887FB30072859B /* Option.h */,
-				58E91A351C887FB30072859B /* Option.m */,
-				58E91A2B1C887EA50072859B /* CoreDataManager.h */,
-				58E91A2C1C887EA50072859B /* CoreDataManager.m */,
 				58E67EDD1C7B524F002EE780 /* Questions */,
 				CEDF09E21C10B227001FFA37 /* Main.storyboard */,
 				CEDF09E51C10B227001FFA37 /* Assets.xcassets */,

@@ -8,10 +8,11 @@
 
 #import "QuestionBaseViewController.h"
 #import "Question+CoreDataProperties.h"
-#import "PROQuestion.h"
 
 @interface QuestionBaseViewController () <UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UITextView *answerDescriptionTextView;
+@property (strong, nonatomic) IBOutlet UILabel *answerLabel;
 @property (weak, nonatomic) IBOutlet UITextField *answerTextField;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
@@ -22,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self assignQuestion];
     self.answerTextField.delegate = self;
     self.view.backgroundColor = [UIColor blueColor];
 }
@@ -31,18 +33,30 @@
     [self.answerTextField becomeFirstResponder];
 }
 
+#pragma mark - Setters
+
+- (void)setQuestion:(PROQuestion *)question {
+    _question = question;
+    
+    [self assignQuestion];
+}
+
 #pragma mark - Private Methods
 
 - (BOOL)didAnswerCorrectly {
-    PROQuestion *tester =[PROQuestion new];
-    tester.name = @"Test";
     
-    if ([[self.answerTextField.text lowercaseString]isEqualToString: [[tester returnAnswer] lowercaseString]])
+    if ([[self.answerTextField.text lowercaseString]isEqualToString: [[self.question returnAnswer] lowercaseString]])
     {
-        tester.isSolved = @(YES);
+        self.question.isSolved = @(YES);
         return YES;   
     }
     return NO;
+}
+
+- (void)assignQuestion {
+    self.questionLabel.text = self.question.name;
+    self.answerLabel.text = [self.question returnAnswer];
+    self.answerDescriptionTextView.text = self.question.extraInfo;
 }
 
 #pragma mark - UITextFieldDelefgateMethods
@@ -52,9 +66,14 @@
         self.view.backgroundColor = [UIColor greenColor];
         [textField resignFirstResponder];
         PROUserDefaultsInstance.score++;
+        self.answerTextField.hidden = YES;
+        self.answerDescriptionTextView.hidden = NO;
+        [self.answerLabel setHidden:NO];
+        
         return YES;
     }
     self.view.backgroundColor = [UIColor redColor];
+    
     return NO;
 }
 

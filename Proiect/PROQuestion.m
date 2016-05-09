@@ -26,10 +26,6 @@
 
 - (NSString*) returnAnswer {
     
-    PROOption *optiune = [PROOption new];
-    optiune.isAnswer = @(TRUE);
-    optiune.answer = @"aaa";
-    self.options = [NSSet setWithObject:optiune];
     
     __block NSString *result = nil;
     [self.options enumerateObjectsUsingBlock:^(PROOption * _Nonnull obj, BOOL * _Nonnull stop) {
