@@ -152,24 +152,32 @@ const CGFloat kMinImageHeight = 64.0;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     int index = indexPath.row % 3;
+    PROQuestion *tester =[PROQuestion new];
+    tester.name = @"Test?";
+    tester.extraInfo = @"This is just a test";
+    tester.longitude = @(46);
+    tester.latitude = @(46);
+    PROOption *optiune = [PROOption new];
+    optiune.isAnswer = @(TRUE);
+    optiune.answer = @"aaa";
+    tester.options = [NSSet setWithObject:optiune];
+    //NSArray *asdf = [tester.options allObjects];
+    //((PROOption*)[asdf objectAtIndex:0]).answer;
     
     switch (index) {
-        case 0:
+        case 0:{
             //Black
+            tester.type = @(PROQuestionTypeLocation);
+            QuestionBaseViewController *questionMenu = [[QuestionBaseViewController alloc] init];
+            questionMenu.question = tester;
+            questionMenu.view.frame = self.view.bounds;
+            [self presentViewController:questionMenu forCellAtIndexPath:indexPath];
             break;
+        }
         case 1: {
             //Blue
+            tester.type = @(PROQuestionTypeTextInput);
             QuestionBaseViewController *questionMenu = [[QuestionBaseViewController alloc] init];
-            
-            PROQuestion *tester =[PROQuestion new];
-            tester.name = @"Test?";
-            PROOption *optiune = [PROOption new];
-            optiune.isAnswer = @(TRUE);
-            optiune.answer = @"aaa";
-            tester.options = [NSSet setWithObject:optiune];
-            tester.extraInfo = @"This is just a test";
-            //NSArray *asdf = [tester.options allObjects];
-            //((PROOption*)[asdf objectAtIndex:0]).answer;
             questionMenu.question = tester;
             questionMenu.view.frame = self.view.bounds;
             [self presentViewController:questionMenu forCellAtIndexPath:indexPath];

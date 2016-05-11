@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Question (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSDecimalNumber *type;
+@property (nullable, nonatomic, retain) NSNumber *type;
 @property (nullable, nonatomic, retain) NSNumber *longitude;
 @property (nullable, nonatomic, retain) NSString *extraInfo;
 @property (nullable, nonatomic, retain) NSNumber *latitude;

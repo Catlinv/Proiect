@@ -9,10 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "PROOption.h"
 
+typedef NS_ENUM (NSInteger, PROQuestionType) {
+    PROQuestionTypeTextInput,
+    PROQuestionTypeMultipleChoice,
+    PROQuestionTypeLocation
+};
+
 @interface PROQuestion : NSObject
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSDecimalNumber *type;
+@property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSString *extraInfo;
 @property (nonatomic, retain) NSNumber *latitude;

@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *answerTextField;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *descriptonQuestionConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *descriptionAnswerConstraint;
+
 @end
 
 @implementation QuestionBaseViewController
@@ -27,6 +30,13 @@
     self.answerTextField.delegate = self;
     self.view.backgroundColor = [UIColor blueColor];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self prepareScreen];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -57,6 +67,27 @@
     self.questionLabel.text = self.question.name;
     self.answerLabel.text = [self.question returnAnswer];
     self.answerDescriptionTextView.text = self.question.extraInfo;
+}
+
+
+- (void)prepareScreen {
+    switch ([self.question.type integerValue]) {
+        case PROQuestionTypeTextInput:
+            //Do nothing
+            break;
+        case PROQuestionTypeMultipleChoice:{
+            self.answerTextField.hidden = YES;
+            break;
+        }
+        case PROQuestionTypeLocation:{
+            self.answerTextField.hidden = YES;
+            self.descriptionAnswerConstraint.priority = 250;
+            self.descriptonQuestionConstraint.priority = 750;
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 #pragma mark - UITextFieldDelefgateMethods

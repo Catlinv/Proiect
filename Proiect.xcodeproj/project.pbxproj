@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		581989CE1CE0E52100C541B1 /* PROLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 581989CD1CE0E52100C541B1 /* PROLocationManager.m */; };
 		581989D01CE0E57700C541B1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581989CF1CE0E57700C541B1 /* CoreLocation.framework */; };
+		581989D51CE38E2C00C541B1 /* QuestionLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */; };
+		581989D61CE38E2C00C541B1 /* QuestionLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581989D41CE38E2C00C541B1 /* QuestionLocationViewController.xib */; };
 		58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */; };
 		58E67EE21C7B5CB1002EE780 /* QuestionBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */; };
 		58E67EE41C7B603F002EE780 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE31C7B603F002EE780 /* backButton.png */; };
@@ -54,6 +56,9 @@
 		581989CC1CE0E52100C541B1 /* PROLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROLocationManager.h; sourceTree = "<group>"; };
 		581989CD1CE0E52100C541B1 /* PROLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROLocationManager.m; sourceTree = "<group>"; };
 		581989CF1CE0E57700C541B1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		581989D21CE38E2C00C541B1 /* QuestionLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionLocationViewController.h; sourceTree = "<group>"; };
+		581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionLocationViewController.m; sourceTree = "<group>"; };
+		581989D41CE38E2C00C541B1 /* QuestionLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionLocationViewController.xib; sourceTree = "<group>"; };
 		58E67EDE1C7B5420002EE780 /* QuestionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionBaseViewController.h; path = Questions/QuestionBaseViewController.h; sourceTree = "<group>"; };
 		58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionBaseViewController.m; path = Questions/QuestionBaseViewController.m; sourceTree = "<group>"; };
 		58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionBaseViewController.xib; sourceTree = "<group>"; };
@@ -146,6 +151,9 @@
 				58E67EDE1C7B5420002EE780 /* QuestionBaseViewController.h */,
 				58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */,
 				58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */,
+				581989D21CE38E2C00C541B1 /* QuestionLocationViewController.h */,
+				581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */,
+				581989D41CE38E2C00C541B1 /* QuestionLocationViewController.xib */,
 			);
 			name = Questions;
 			sourceTree = "<group>";
@@ -361,6 +369,7 @@
 				CEDF09E61C10B227001FFA37 /* Assets.xcassets in Resources */,
 				58E67EE21C7B5CB1002EE780 /* QuestionBaseViewController.xib in Resources */,
 				58E67EE41C7B603F002EE780 /* backButton.png in Resources */,
+				581989D61CE38E2C00C541B1 /* QuestionLocationViewController.xib in Resources */,
 				CEDF09E41C10B227001FFA37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +401,7 @@
 				593285461C9D857F003D0425 /* PROQuestion.m in Sources */,
 				58E91A1B1C8874400072859B /* Question.xcdatamodeld in Sources */,
 				58E91A391C887FB30072859B /* Option.m in Sources */,
+				581989D51CE38E2C00C541B1 /* QuestionLocationViewController.m in Sources */,
 				CEDF09E11C10B227001FFA37 /* ViewController.m in Sources */,
 				58E91A361C887FB30072859B /* Question+CoreDataProperties.m in Sources */,
 				58E91A381C887FB30072859B /* Option+CoreDataProperties.m in Sources */,

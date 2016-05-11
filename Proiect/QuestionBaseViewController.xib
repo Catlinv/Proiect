@@ -12,6 +12,8 @@
                 <outlet property="answerDescriptionTextView" destination="GE1-4m-UQf" id="6bD-3n-Qz3"/>
                 <outlet property="answerLabel" destination="ibn-1Z-osr" id="Zih-n3-Ie2"/>
                 <outlet property="answerTextField" destination="lQa-9X-HR4" id="D1y-vI-i95"/>
+                <outlet property="descriptionAnswerConstraint" destination="OQ2-Ot-cdx" id="8r8-ay-Y39"/>
+                <outlet property="descriptonQuestionConstraint" destination="bum-r0-Cir" id="OaR-eo-bF4"/>
                 <outlet property="questionLabel" destination="B6V-JY-yDa" id="STo-mg-BC1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yzi-UU-MmI"/>
             </connections>
@@ -74,7 +76,7 @@
                         <constraint firstAttribute="trailing" secondItem="GE1-4m-UQf" secondAttribute="trailing" constant="20" id="It8-PX-5bf"/>
                         <constraint firstItem="GE1-4m-UQf" firstAttribute="leading" secondItem="ErH-aW-426" secondAttribute="leading" constant="20" id="JKL-jZ-X8t"/>
                         <constraint firstItem="ibn-1Z-osr" firstAttribute="centerY" secondItem="ErH-aW-426" secondAttribute="centerY" id="ON5-b0-8th"/>
-                        <constraint firstItem="GE1-4m-UQf" firstAttribute="top" secondItem="lQa-9X-HR4" secondAttribute="bottom" constant="50" id="OQ2-Ot-cdx"/>
+                        <constraint firstItem="GE1-4m-UQf" firstAttribute="top" secondItem="lQa-9X-HR4" secondAttribute="bottom" priority="750" constant="50" id="OQ2-Ot-cdx"/>
                         <constraint firstItem="lQa-9X-HR4" firstAttribute="leading" secondItem="ErH-aW-426" secondAttribute="leading" constant="20" id="g0a-XF-Vo2"/>
                         <constraint firstAttribute="width" secondItem="ErH-aW-426" secondAttribute="height" multiplier="150:113" id="gTW-Jv-jbB"/>
                         <constraint firstItem="ibn-1Z-osr" firstAttribute="centerX" secondItem="ErH-aW-426" secondAttribute="centerX" id="hP8-Dg-aCd"/>
@@ -101,6 +103,7 @@
                 <constraint firstItem="ErH-aW-426" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PZx-b0-Wa6"/>
                 <constraint firstAttribute="trailing" secondItem="B6V-JY-yDa" secondAttribute="trailing" id="TFJ-7N-2Sr"/>
                 <constraint firstItem="q1c-8X-A7Y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ykw-FU-PaU"/>
+                <constraint firstItem="GE1-4m-UQf" firstAttribute="top" secondItem="B6V-JY-yDa" secondAttribute="bottom" priority="250" constant="30" id="bum-r0-Cir"/>
                 <constraint firstItem="ErH-aW-426" firstAttribute="top" secondItem="B6V-JY-yDa" secondAttribute="bottom" id="eQW-D0-0cg"/>
                 <constraint firstAttribute="trailing" secondItem="ErH-aW-426" secondAttribute="trailing" id="t2Y-0x-AJX"/>
                 <constraint firstItem="B6V-JY-yDa" firstAttribute="top" secondItem="q1c-8X-A7Y" secondAttribute="bottom" id="uOg-XY-cVg"/>
