@@ -51,9 +51,18 @@
     [self assignQuestion];
 }
 
+#pragma mark - Public Methods
+
+- (void) didAnswerCorrectly {
+    
+    self.view.backgroundColor = [UIColor greenColor];
+    PROUserDefaultsInstance.score++;
+    self.answerDescriptionTextView.hidden = NO;
+}
+
 #pragma mark - Private Methods
 
-- (BOOL)didAnswerCorrectly {
+- (BOOL)checkAnswer {
     
     if ([[self.answerTextField.text lowercaseString]isEqualToString: [[self.question returnAnswer] lowercaseString]])
     {
@@ -93,13 +102,11 @@
 #pragma mark - UITextFieldDelefgateMethods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if([self didAnswerCorrectly]){
-        self.view.backgroundColor = [UIColor greenColor];
-        [textField resignFirstResponder];
-        PROUserDefaultsInstance.score++;
-        self.answerTextField.hidden = YES;
-        self.answerDescriptionTextView.hidden = NO;
+    if([self checkAnswer]){
+        [self didAnswerCorrectly];
         [self.answerLabel setHidden:NO];
+        self.answerTextField.hidden = YES;
+        [textField resignFirstResponder];
         
         return YES;
     }

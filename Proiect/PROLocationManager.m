@@ -38,11 +38,24 @@ static PROLocationManager *sharedInstance = nil;
     return self;
 }
 
-#pragma mark - Private Methods
+#pragma mark - Public Methods
 
 - (void)startTracker {
-    [self.locationManager startUpdatingLocation];
+    switch ([CLLocationManager authorizationStatus]) {
+        case kCLAuthorizationStatusRestricted:
+        case kCLAuthorizationStatusDenied:
+            NSLog(@"Enable Location plox");
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+        case kCLAuthorizationStatusAuthorizedAlways:
+            [self.locationManager startUpdatingLocation];
+            break;
+        default:
+            break;
+    }
 }
+
+#pragma mark - Private Methods
 
 - (void)determinePermissionForAuthorisationStatus:(CLAuthorizationStatus)status{
     switch (status) {
@@ -55,7 +68,7 @@ static PROLocationManager *sharedInstance = nil;
             break;
         case kCLAuthorizationStatusAuthorizedWhenInUse:
         case kCLAuthorizationStatusAuthorizedAlways:
-            [self startTracker];
+            [self.locationManager startUpdatingLocation];
             break;
         default:
             break;
@@ -65,12 +78,12 @@ static PROLocationManager *sharedInstance = nil;
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-        [self determinePermissionForAuthorisationStatus:status];
+    [self determinePermissionForAuthorisationStatus:status];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if (self.delegate /*&& [self.delegate respondsToSelector:@selector(proLocationManager:sendLocations:)]*/) {
-        [self.delegate proLocationManager:self sendLocations:[locations lastObject]];
+        [self.delegate proLocationManager:self sendLocation:[locations lastObject]];
     }
 }
 

@@ -15,6 +15,7 @@
                 <outlet property="descriptionAnswerConstraint" destination="OQ2-Ot-cdx" id="8r8-ay-Y39"/>
                 <outlet property="descriptonQuestionConstraint" destination="bum-r0-Cir" id="OaR-eo-bF4"/>
                 <outlet property="questionLabel" destination="B6V-JY-yDa" id="STo-mg-BC1"/>
+                <outlet property="questionWorkingView" destination="ErH-aW-426" id="Ztf-zI-vlo"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yzi-UU-MmI"/>
             </connections>
         </placeholder>
@@ -35,15 +36,6 @@
                         <action selector="didTapBackButton:" destination="-1" eventType="touchUpInside" id="g19-FI-7tv"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6V-JY-yDa">
-                    <rect key="frame" x="0.0" y="48" width="600" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="gqJ-fk-3Ug"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErH-aW-426">
                     <rect key="frame" x="0.0" y="148" width="600" height="452"/>
                     <subviews>
@@ -58,7 +50,7 @@
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-1Z-osr">
                             <rect key="frame" x="279" y="56" width="42" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GE1-4m-UQf">
@@ -93,6 +85,15 @@
                         </mask>
                     </variation>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6V-JY-yDa">
+                    <rect key="frame" x="0.0" y="48" width="600" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" priority="999" constant="100" id="gqJ-fk-3Ug"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

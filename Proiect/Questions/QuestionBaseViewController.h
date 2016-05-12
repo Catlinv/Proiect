@@ -14,4 +14,10 @@
 
 @property (strong, nonatomic)  PROQuestion *question;
 
+//Protected
+
+- (void) didAnswerCorrectly;
+
+@property (strong, nonatomic) IBOutlet UIView *questionWorkingView;
+
 @end

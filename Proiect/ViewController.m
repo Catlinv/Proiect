@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "OptionsTableViewController.h"
-#import "QuestionBaseViewController.h"
+//#import "QuestionBaseViewController.h"
+#import "QuestionLocationViewController.h"
 //#import "PROUserDefaults.h"
 
 const CGFloat kMinImageHeight = 64.0;
@@ -168,7 +169,7 @@ const CGFloat kMinImageHeight = 64.0;
         case 0:{
             //Black
             tester.type = @(PROQuestionTypeLocation);
-            QuestionBaseViewController *questionMenu = [[QuestionBaseViewController alloc] init];
+            QuestionBaseViewController *questionMenu = [[QuestionLocationViewController alloc] init];
             questionMenu.question = tester;
             questionMenu.view.frame = self.view.bounds;
             [self presentViewController:questionMenu forCellAtIndexPath:indexPath];

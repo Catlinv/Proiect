@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 
 #define PROLocationManagerInstance [PROLocationManager sharedInstance]
 
@@ -17,10 +16,14 @@
 
 @property(weak, nonatomic) id<PROLocationManagerDelegate> delegate;
 
+- (void)startTracker;
+
++ (instancetype) sharedInstance;
+
 @end
 
 @protocol PROLocationManagerDelegate <NSObject>
 
-- (void) proLocationManager:(PROLocationManager *)locationManager sendLocations:(CLLocation *)location;
+- (void) proLocationManager:(PROLocationManager *)locationManager sendLocation:(CLLocation *)location;
 
 @end
