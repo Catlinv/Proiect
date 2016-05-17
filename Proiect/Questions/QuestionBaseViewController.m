@@ -58,6 +58,9 @@
     self.view.backgroundColor = [UIColor greenColor];
     PROUserDefaultsInstance.score++;
     self.answerDescriptionTextView.hidden = NO;
+    self.question.isSolved = @(1);
+    if ([self.question.type integerValue] != PROQuestionTypeLocation)
+        [self.answerLabel setHidden:NO];
 }
 
 #pragma mark - Private Methods
@@ -86,6 +89,8 @@
             break;
         case PROQuestionTypeMultipleChoice:{
             self.answerTextField.hidden = YES;
+            //self.descriptionAnswerConstraint.priority = 250;
+            //self.descriptonQuestionConstraint.priority = 750;
             break;
         }
         case PROQuestionTypeLocation:{
@@ -104,7 +109,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if([self checkAnswer]){
         [self didAnswerCorrectly];
-        [self.answerLabel setHidden:NO];
         self.answerTextField.hidden = YES;
         [textField resignFirstResponder];
         

@@ -11,6 +11,8 @@
 @interface PROLocationManager () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *bestLocation;
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -31,11 +33,21 @@ static PROLocationManager *sharedInstance = nil;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.locationManager = [CLLocationManager new];
-        self.locationManager.delegate = self;
+        [self setupLocationManager];
         [self determinePermissionForAuthorisationStatus:[CLLocationManager authorizationStatus]];
     }
     return self;
+}
+
+#pragma mark - Setters
+
+- (void)setDelegate:(id<PROLocationManagerDelegate>)delegate {
+    _delegate = delegate;
+    
+    if (delegate)
+        [self setupTimer];
+    else
+        [self stopTracker];
 }
 
 #pragma mark - Public Methods
@@ -55,7 +67,27 @@ static PROLocationManager *sharedInstance = nil;
     }
 }
 
+//TODO: (CS) Add stop tracker but only stop timer
+
+- (void)stopTracker{
+    if ([self.timer isValid]){
+        [self.timer invalidate];
+    }
+    self.timer = nil;
+}
+
 #pragma mark - Private Methods
+
+- (void)setupTimer {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kRefreshRateInSeconds target:self selector:@selector(sendBestLocation:) userInfo:nil repeats:YES];
+    [self.timer fire];
+}
+
+- (void)setupLocationManager {
+    self.locationManager = [CLLocationManager new];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.locationManager.delegate = self;
+}
 
 - (void)determinePermissionForAuthorisationStatus:(CLAuthorizationStatus)status{
     switch (status) {
@@ -75,6 +107,13 @@ static PROLocationManager *sharedInstance = nil;
     }
 }
 
+- (void)sendBestLocation:(NSTimer *)timer{
+    if (self.delegate /*&& [self.delegate respondsToSelector:@selector(proLocationManager:sendLocations:)]*/) {
+        [self.delegate proLocationManager:self sendLocation:self.bestLocation];
+    }
+    self.bestLocation = nil;
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
@@ -82,9 +121,17 @@ static PROLocationManager *sharedInstance = nil;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if (self.delegate /*&& [self.delegate respondsToSelector:@selector(proLocationManager:sendLocations:)]*/) {
-        [self.delegate proLocationManager:self sendLocation:[locations lastObject]];
-    }
+    
+    
+    
+    double bestAcc = (self.bestLocation) ? self.bestLocation.horizontalAccuracy : 15000.0;
+    for (int i = 0; i < locations.count; i++)
+        if (locations[i].horizontalAccuracy < bestAcc)
+        {
+            self.bestLocation = locations[i];
+            bestAcc = locations[i].horizontalAccuracy;
+        }
+        
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

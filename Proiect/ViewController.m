@@ -10,7 +10,7 @@
 #import "OptionsTableViewController.h"
 //#import "QuestionBaseViewController.h"
 #import "QuestionLocationViewController.h"
-//#import "PROUserDefaults.h"
+#import "QuestionMultipleChoiceViewController.h"
 
 const CGFloat kMinImageHeight = 64.0;
 
@@ -185,9 +185,30 @@ const CGFloat kMinImageHeight = 64.0;
             
             break;
         }
-        case 2:
+        case 2:{
             //Red
+            PROOption *optiune1 = [PROOption new];
+            optiune1.isAnswer = @(NO);
+            optiune1.answer = @"bbb";
+            PROOption *optiune2 = [PROOption new];
+            optiune2.isAnswer = @(NO);
+            optiune2.answer = @"ccc";
+            PROOption *optiune3 = [PROOption new];
+            optiune3.isAnswer = @(NO);
+            optiune3.answer = @"ddd";
+            
+            NSMutableSet *asd = [tester.options mutableCopy];
+            [asd addObjectsFromArray:@[optiune1,optiune2,optiune3]];
+            tester.options = asd;
+            
+            tester.type = @(PROQuestionTypeMultipleChoice);
+            QuestionBaseViewController *questionMenu = [[QuestionMultipleChoiceViewController alloc] init];
+            questionMenu.question = tester;
+            questionMenu.view.frame = self.view.bounds;
+            [self presentViewController:questionMenu forCellAtIndexPath:indexPath];
+            
             break;
+        }
         default:
             break;
     }

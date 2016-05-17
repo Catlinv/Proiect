@@ -10,6 +10,7 @@
 		581989CE1CE0E52100C541B1 /* PROLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 581989CD1CE0E52100C541B1 /* PROLocationManager.m */; };
 		581989D01CE0E57700C541B1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581989CF1CE0E57700C541B1 /* CoreLocation.framework */; };
 		581989D51CE38E2C00C541B1 /* QuestionLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */; };
+		585C20691CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 585C20681CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m */; };
 		58E62FCB1CE4BAB600C89663 /* PROUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E62FCA1CE4BAB600C89663 /* PROUtils.m */; };
 		58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */; };
 		58E67EE21C7B5CB1002EE780 /* QuestionBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */; };
@@ -58,6 +59,9 @@
 		581989CF1CE0E57700C541B1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		581989D21CE38E2C00C541B1 /* QuestionLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionLocationViewController.h; sourceTree = "<group>"; };
 		581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionLocationViewController.m; sourceTree = "<group>"; };
+		585C20661CEB6C85008B4710 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		585C20671CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionMultipleChoiceViewController.h; sourceTree = "<group>"; };
+		585C20681CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionMultipleChoiceViewController.m; sourceTree = "<group>"; };
 		58E62FC91CE4BAB600C89663 /* PROUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROUtils.h; sourceTree = "<group>"; };
 		58E62FCA1CE4BAB600C89663 /* PROUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROUtils.m; sourceTree = "<group>"; };
 		58E67EDE1C7B5420002EE780 /* QuestionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionBaseViewController.h; path = Questions/QuestionBaseViewController.h; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 			children = (
 				58E62FC91CE4BAB600C89663 /* PROUtils.h */,
 				58E62FCA1CE4BAB600C89663 /* PROUtils.m */,
+				585C20661CEB6C85008B4710 /* Constants.h */,
 			);
 			name = BusinessUtils;
 			sourceTree = "<group>";
@@ -163,6 +168,8 @@
 				58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */,
 				581989D21CE38E2C00C541B1 /* QuestionLocationViewController.h */,
 				581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */,
+				585C20671CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.h */,
+				585C20681CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m */,
 			);
 			name = Questions;
 			sourceTree = "<group>";
@@ -409,6 +416,7 @@
 				581989CE1CE0E52100C541B1 /* PROLocationManager.m in Sources */,
 				593285461C9D857F003D0425 /* PROQuestion.m in Sources */,
 				58E62FCB1CE4BAB600C89663 /* PROUtils.m in Sources */,
+				585C20691CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m in Sources */,
 				58E91A1B1C8874400072859B /* Question.xcdatamodeld in Sources */,
 				58E91A391C887FB30072859B /* Option.m in Sources */,
 				581989D51CE38E2C00C541B1 /* QuestionLocationViewController.m in Sources */,

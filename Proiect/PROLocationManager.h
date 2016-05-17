@@ -17,6 +17,7 @@
 @property(weak, nonatomic) id<PROLocationManagerDelegate> delegate;
 
 - (void)startTracker;
+- (void)stopTracker;
 
 + (instancetype) sharedInstance;
 

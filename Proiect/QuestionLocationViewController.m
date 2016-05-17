@@ -9,8 +9,6 @@
 #import "QuestionLocationViewController.h"
 #import "PROLocationManager.h"
 
-#define kMinimalValidationDistance 15.0
-
 
 @interface QuestionLocationViewController () <PROLocationManagerDelegate>
 
@@ -44,6 +42,7 @@
         [self didAnswerCorrectly];
         self.distanceLeftLabel.hidden = YES;
     } else {
+                                                                //TODO : (CS) Conversion distance in other method
         self.distanceLeftLabel.text = [NSString stringWithFormat:@"You have %f meters left", distanceLeft];
     }
         
@@ -53,7 +52,8 @@
 #pragma mark - PROLocationDelegate
 
 - (void)proLocationManager:(PROLocationManager *)locationManager sendLocation:(CLLocation *)location {
-    [self validateCoordinates:[location coordinate]];
+    if (location && ![self.question.isSolved boolValue])
+        [self validateCoordinates:[location coordinate]];
 }
 
 
@@ -62,7 +62,7 @@
 - (void)setupDistanceLeftLabel {
     
     self.distanceLeftLabel = [[UILabel alloc] initWithFrame: self.questionWorkingView.bounds];
-    self.distanceLeftLabel.text = @"Testing purpose";
+    self.distanceLeftLabel.text = @"Getting Location";
     self.distanceLeftLabel.textAlignment = NSTextAlignmentCenter;
     self.distanceLeftLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
