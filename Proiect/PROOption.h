@@ -15,5 +15,6 @@
 
 
 -(void)fillOptionWithOption:(PROOption *)option;
++ (instancetype)optionWithDictionary:(NSDictionary *)dictionar;
 
 @end

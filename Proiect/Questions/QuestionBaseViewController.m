@@ -14,10 +14,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *answerDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 @property (weak, nonatomic) IBOutlet UITextField *answerTextField;
-@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *descriptonQuestionConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *descriptionAnswerConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
 @end
 

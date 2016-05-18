@@ -8,6 +8,8 @@
 
 #import "QuestionMultipleChoiceViewController.h"
 
+#define margin 5.0
+
 @interface QuestionMultipleChoiceViewController ()
 
 @property (strong, nonatomic) NSMutableArray *buttonArray;
@@ -50,6 +52,10 @@
         }
         self.buttonArray = nil;
     }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor redColor]];
+    }
 }
 
 #pragma mark - Private UI Methods
@@ -64,15 +70,22 @@
     for (NSInteger i = 0; i < optionsArray.count; i++){
         currentOption = optionsArray[i];
         button = [UIButton new];
+        [button setBackgroundColor:[UIColor purpleColor]];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        button.translatesAutoresizingMaskIntoConstraints = NO;
         [button setTitle:currentOption.answer forState:UIControlStateNormal];
+        
         [self.questionWorkingView addSubview:button];
         
-        NSLayoutConstraint *halfWidth = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeWidth multiplier:2.0 constant:0];
-        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeHeight multiplier:2.0 constant:0];
+        NSLayoutConstraint *halfWidth = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeWidth multiplier:0.5 constant:-1.5 * margin];
+        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeHeight multiplier:0.5 constant:-1.5 * margin];
         
-        NSLayoutConstraint *horizontalMargin = i%2 ? [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0] : [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0];
+        NSLayoutConstraint *horizontalMargin = i%2 ? [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:margin] : [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-margin];
         
-        NSLayoutConstraint *verticalMargin = i<2 ? [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0] : [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+        NSLayoutConstraint *verticalMargin = i<2 ? [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeTop multiplier:1.0 constant:margin] : [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.questionWorkingView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-margin];
+        
+        
         
         [button.superview addConstraints:@[horizontalMargin,verticalMargin,halfWidth, height]];
         [button addTarget:self action:@selector(didTapButton:) forControlEvents:UIControlEventTouchUpInside];

@@ -35,4 +35,27 @@
     return result;
 }
 
+#pragma mark - Life Cycle
+
++ (instancetype)questionWithDictionary:(NSDictionary*)dictionar {
+    
+    PROQuestion *question = [PROQuestion new];
+    
+    question.name = [dictionar valueForKey:@"name"];
+    question.type = [dictionar valueForKey:@"type"];
+    question.longitude = [dictionar valueForKey:@"longitude"];
+    question.extraInfo = [dictionar valueForKey:@"extraInfo"];
+    question.latitude = [dictionar valueForKey:@"latitude"];
+    question.isSolved = [dictionar valueForKey:@"isSolved"];
+    question.isUnlocked = [dictionar valueForKey:@"isUnlocked"];
+    NSArray *optionsArray = [dictionar valueForKey:@"options"];
+    NSMutableSet *mutableSet = [NSMutableSet new];
+    for (NSDictionary *optiune in optionsArray) {
+        [mutableSet addObject:[PROOption optionWithDictionary:optiune]];
+    }
+    question.options = mutableSet;
+    
+    return question;
+}
+
 @end

@@ -27,6 +27,7 @@ typedef NS_ENUM (NSInteger, PROQuestionType) {
 @property (nonatomic, retain) NSSet<PROOption *> *options;
 
 -(void) fillQuestionWithQuestion:(PROQuestion *)question;
++ (instancetype)questionWithDictionary:(NSDictionary*)dictionar;
 
 - (NSString*) returnAnswer;
 

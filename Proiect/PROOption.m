@@ -14,4 +14,13 @@
     self.answer = option.answer;
     self.isAnswer = option.isAnswer;
 }
+
++ (instancetype)optionWithDictionary:(NSDictionary *)dictionar{
+    PROOption *optiune = [PROOption new];
+    
+    optiune.answer = [dictionar valueForKey:@"answer"];
+    optiune.isAnswer = [dictionar valueForKey:@"isAnswer"];
+    return optiune;
+}
+
 @end

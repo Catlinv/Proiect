@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>QuestionsArray</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Test nou?</string>
+			<key>type</key>
+			<integer>0</integer>
+			<key>longitude</key>
+			<integer>46</integer>
+			<key>latitude</key>
+			<integer>46</integer>
+			<key>extraInfo</key>
+			<string>Ii bun</string>
+			<key>isSolved</key>
+			<integer>0</integer>
+			<key>isUnlocked</key>
+			<integer>1</integer>
+			<key>options</key>
+			<array>
+				<dict>
+					<key>answer</key>
+					<string>a</string>
+					<key>isAnswer</key>
+					<integer>1</integer>
+				</dict>
+				<dict>
+					<key>answer</key>
+					<string>b</string>
+					<key>isAnswer</key>
+					<integer>0</integer>
+				</dict>
+				<dict>
+					<key>answer</key>
+					<string>c</string>
+					<key>isAnswer</key>
+					<integer>0</integer>
+				</dict>
+				<dict>
+					<key>answer</key>
+					<string>d</string>
+					<key>isAnswer</key>
+					<integer>0</integer>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
