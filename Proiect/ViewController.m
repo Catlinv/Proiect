@@ -11,17 +11,18 @@
 //#import "QuestionBaseViewController.h"
 #import "QuestionLocationViewController.h"
 #import "QuestionMultipleChoiceViewController.h"
+#import "PRODataGatherer.h"
 
 const CGFloat kMinImageHeight = 64.0;
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *statsLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *intrebariScroll;
+//@property (weak, nonatomic) IBOutlet UICollectionView *intrebariScroll;
 @property (weak, nonatomic) IBOutlet UIImageView *imageStart;
 
 @property (nonatomic, assign) NSUInteger i;
-@property (nonatomic, strong) NSArray *colors;
+@property (nonatomic, strong) NSDictionary *images;
 @property (nonatomic, assign) CGFloat maxImageHeight;
 @property (nonatomic, assign) CGFloat prevScrollOffsetY;
 
@@ -40,7 +41,11 @@ const CGFloat kMinImageHeight = 64.0;
     self.i = 0;
     self.prevScrollOffsetY = 0;
     self.statsLabel.text = [@(self.i) stringValue];
-    self.colors = @[[UIColor blackColor], [UIColor blueColor], [UIColor redColor]];
+    self.images = @{ @(PROQuestionTypeLocation):[UIImage imageNamed:@"compasIcon.jpg"],
+                     @(PROQuestionTypeTextInput):[UIImage imageNamed:@"compasIcon.jpg"],
+                     @(PROQuestionTypeMultipleChoice):[UIImage imageNamed:@"compasIcon.jpg"],
+                     @(PROQuestionTypeSolved):[UIImage imageNamed:@"checkSign.png"]
+                   };
     self.intrebariScroll.dataSource = self;
     self.intrebariScroll.delegate = self;
     self.maxImageHeight = self.view.frame.size.height / 2.0;
@@ -52,6 +57,12 @@ const CGFloat kMinImageHeight = 64.0;
     self.statsLabel.text = [NSString stringWithFormat:@"%li",(long)PROUserDefaultsInstance.score];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDefaultsValueChanged:) name:kPROUserDefaultsValueChangedNotification  object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    [self.intrebariScroll reloadData];
 }
 
 - (IBAction)optionsButtonTapped:(id)sender {
@@ -104,12 +115,42 @@ const CGFloat kMinImageHeight = 64.0;
 #pragma mark - UICollectionViewDataSource Methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 500;
+    return [[PRODataGatherer getQuestionsArray] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Orice" forIndexPath:indexPath];
-    cell.backgroundColor = [self.colors objectAtIndex:indexPath.row % 3];
+    PROQuestion *tester = [[PRODataGatherer getQuestionsArray] objectAtIndex:indexPath.row];
+    UIImageView *imageView;
+    if (cell.contentView.subviews.count){
+        imageView = [cell.contentView.subviews firstObject];
+    }
+    else {
+        imageView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
+        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [cell.contentView addSubview:imageView];
+    }
+    
+    imageView.image = [self.images objectForKey:tester.type];
+    imageView = nil;
+    
+    if (cell.contentView.subviews.count > 1){
+        if ([tester.isSolved boolValue]){
+        imageView = [cell.contentView.subviews objectAtIndex:1];
+        }
+    }
+    else {
+        if ([tester.isSolved boolValue]) {
+        imageView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
+        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [cell.contentView addSubview:imageView];
+        }
+    }
+    
+    imageView.image = [self.images objectForKey:@(PROQuestionTypeSolved)];
+    
     return cell;
 }
 
@@ -154,21 +195,22 @@ const CGFloat kMinImageHeight = 64.0;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     int index = indexPath.row % 3;
     PROQuestion *tester =[PROQuestion new];
-    tester.name = @"Test?";
-    tester.extraInfo = @"This is just a test";
-    tester.longitude = @(46);
-    tester.latitude = @(46);
-    PROOption *optiune = [PROOption new];
-    optiune.isAnswer = @(TRUE);
-    optiune.answer = @"aaa";
-    tester.options = [NSSet setWithObject:optiune];
+    tester = [[PRODataGatherer getQuestionsArray] objectAtIndex:indexPath.row];
+//    tester.name = @"Test?";
+//    tester.extraInfo = @"This is just a test";
+//    tester.longitude = @(46);
+//    tester.latitude = @(46);
+//    PROOption *optiune = [PROOption new];
+//    optiune.isAnswer = @(TRUE);
+//    optiune.answer = @"aaa";
+//    tester.options = [NSSet setWithObject:optiune];
     //NSArray *asdf = [tester.options allObjects];
     //((PROOption*)[asdf objectAtIndex:0]).answer;
     
     switch (index) {
         case 0:{
             //Black
-            tester.type = @(PROQuestionTypeLocation);
+            //tester.type = @(PROQuestionTypeLocation);
             QuestionBaseViewController *questionMenu = [[QuestionLocationViewController alloc] init];
             questionMenu.question = tester;
             questionMenu.view.frame = self.view.bounds;
@@ -177,7 +219,7 @@ const CGFloat kMinImageHeight = 64.0;
         }
         case 1: {
             //Blue
-            tester.type = @(PROQuestionTypeTextInput);
+            //tester.type = @(PROQuestionTypeTextInput);
             QuestionBaseViewController *questionMenu = [[QuestionBaseViewController alloc] init];
             questionMenu.question = tester;
             questionMenu.view.frame = self.view.bounds;
@@ -187,21 +229,21 @@ const CGFloat kMinImageHeight = 64.0;
         }
         case 2:{
             //Red
-            PROOption *optiune1 = [PROOption new];
-            optiune1.isAnswer = @(NO);
-            optiune1.answer = @"bbb";
-            PROOption *optiune2 = [PROOption new];
-            optiune2.isAnswer = @(NO);
-            optiune2.answer = @"ccc";
-            PROOption *optiune3 = [PROOption new];
-            optiune3.isAnswer = @(NO);
-            optiune3.answer = @"ddd";
+//            PROOption *optiune1 = [PROOption new];
+//            optiune1.isAnswer = @(NO);
+//            optiune1.answer = @"bbb";
+//            PROOption *optiune2 = [PROOption new];
+//            optiune2.isAnswer = @(NO);
+//            optiune2.answer = @"ccc";
+//            PROOption *optiune3 = [PROOption new];
+//            optiune3.isAnswer = @(NO);
+//            optiune3.answer = @"ddd";
+//            
+//            NSMutableSet *asd = [tester.options mutableCopy];
+//            [asd addObjectsFromArray:@[optiune1,optiune2,optiune3]];
+//            tester.options = asd;
             
-            NSMutableSet *asd = [tester.options mutableCopy];
-            [asd addObjectsFromArray:@[optiune1,optiune2,optiune3]];
-            tester.options = asd;
-            
-            tester.type = @(PROQuestionTypeMultipleChoice);
+            //tester.type = @(PROQuestionTypeMultipleChoice);
             QuestionBaseViewController *questionMenu = [[QuestionMultipleChoiceViewController alloc] init];
             questionMenu.question = tester;
             questionMenu.view.frame = self.view.bounds;

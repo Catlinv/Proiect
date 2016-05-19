@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class PROQuestion;
+
 @interface PRODataGatherer : NSObject
+
++ (void)fillCoreData;
++ (NSArray<PROQuestion *> *)getQuestionsArray;
 
 @end

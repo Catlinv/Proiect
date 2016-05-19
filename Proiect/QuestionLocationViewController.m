@@ -18,6 +18,8 @@
 
 @implementation QuestionLocationViewController
 
+#pragma mark - Overwritten
+
 - (instancetype)init
 {
     self = [super initWithNibName:@"QuestionBaseViewController" bundle:nil];
@@ -27,9 +29,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupDistanceLeftLabel];
-    [PROLocationManagerInstance setDelegate:self];
-    [PROLocationManagerInstance startTracker];
+    
+    if (![self.question.isSolved boolValue]) {
+        [self setupDistanceLeftLabel];
+        [PROLocationManagerInstance setDelegate:self];
+        [PROLocationManagerInstance startTracker];
+    }
+}
+
+- (void)hideWorkingUI {
+    self.distanceLeftLabel.hidden = YES;
 }
 
 #pragma mark - Private Methods

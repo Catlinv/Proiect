@@ -13,6 +13,8 @@
 		585C20691CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 585C20681CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m */; };
 		58C86F9A1CECB6B700A62800 /* QuestionDataSet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C86F991CECB6B700A62800 /* QuestionDataSet.plist */; };
 		58C86F9D1CECB93400A62800 /* PRODataGatherer.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C86F9C1CECB93400A62800 /* PRODataGatherer.m */; };
+		58C86FA01CEDF2F000A62800 /* compasIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58C86F9F1CEDF2F000A62800 /* compasIcon.jpg */; };
+		58C86FA21CEE05FA00A62800 /* checkSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C86FA11CEE05FA00A62800 /* checkSign.png */; };
 		58E62FCB1CE4BAB600C89663 /* PROUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E62FCA1CE4BAB600C89663 /* PROUtils.m */; };
 		58E67EE01C7B5420002EE780 /* QuestionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */; };
 		58E67EE21C7B5CB1002EE780 /* QuestionBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */; };
@@ -67,12 +69,14 @@
 		58C86F991CECB6B700A62800 /* QuestionDataSet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = QuestionDataSet.plist; sourceTree = "<group>"; };
 		58C86F9B1CECB93400A62800 /* PRODataGatherer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRODataGatherer.h; sourceTree = "<group>"; };
 		58C86F9C1CECB93400A62800 /* PRODataGatherer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRODataGatherer.m; sourceTree = "<group>"; };
+		58C86F9F1CEDF2F000A62800 /* compasIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = compasIcon.jpg; sourceTree = "<group>"; };
+		58C86FA11CEE05FA00A62800 /* checkSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkSign.png; sourceTree = "<group>"; };
 		58E62FC91CE4BAB600C89663 /* PROUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROUtils.h; sourceTree = "<group>"; };
 		58E62FCA1CE4BAB600C89663 /* PROUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROUtils.m; sourceTree = "<group>"; };
 		58E67EDE1C7B5420002EE780 /* QuestionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionBaseViewController.h; path = Questions/QuestionBaseViewController.h; sourceTree = "<group>"; };
 		58E67EDF1C7B5420002EE780 /* QuestionBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionBaseViewController.m; path = Questions/QuestionBaseViewController.m; sourceTree = "<group>"; };
 		58E67EE11C7B5CB1002EE780 /* QuestionBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionBaseViewController.xib; sourceTree = "<group>"; };
-		58E67EE31C7B603F002EE780 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
+		58E67EE31C7B603F002EE780 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backButton.png; path = ../backButton.png; sourceTree = "<group>"; };
 		58E91A1A1C8874400072859B /* Question.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Question.xcdatamodel; sourceTree = "<group>"; };
 		58E91A2B1C887EA50072859B /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		58E91A2C1C887EA50072859B /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
@@ -109,7 +113,7 @@
 		CEDF09FA1C10B227001FFA37 /* ProiectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProiectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDF09FE1C10B227001FFA37 /* ProiectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProiectUITests.m; sourceTree = "<group>"; };
 		CEDF0A001C10B227001FFA37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEDF0A0C1C10B8A4001FFA37 /* startImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = startImg.jpg; sourceTree = "<group>"; };
+		CEDF0A0C1C10B8A4001FFA37 /* startImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = startImg.jpg; path = ../startImg.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,17 @@
 				581989CF1CE0E57700C541B1 /* CoreLocation.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		58C86F9E1CEDF2F000A62800 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				58C86FA11CEE05FA00A62800 /* checkSign.png */,
+				CEDF0A0C1C10B8A4001FFA37 /* startImg.jpg */,
+				58E67EE31C7B603F002EE780 /* backButton.png */,
+				58C86F9F1CEDF2F000A62800 /* compasIcon.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		58E62FC81CE4BA8500C89663 /* BusinessUtils */ = {
@@ -260,8 +275,7 @@
 		CEDF09D91C10B227001FFA37 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CEDF0A0C1C10B8A4001FFA37 /* startImg.jpg */,
-				58E67EE31C7B603F002EE780 /* backButton.png */,
+				58C86F9E1CEDF2F000A62800 /* Images */,
 				CEDF09DA1C10B227001FFA37 /* main.m */,
 				58C86F991CECB6B700A62800 /* QuestionDataSet.plist */,
 			);
@@ -389,7 +403,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C86FA21CEE05FA00A62800 /* checkSign.png in Resources */,
 				58C86F9A1CECB6B700A62800 /* QuestionDataSet.plist in Resources */,
+				58C86FA01CEDF2F000A62800 /* compasIcon.jpg in Resources */,
 				CEDF09E91C10B227001FFA37 /* LaunchScreen.storyboard in Resources */,
 				CEDF0A0D1C10B8A4001FFA37 /* startImg.jpg in Resources */,
 				CEDF09E61C10B227001FFA37 /* Assets.xcassets in Resources */,

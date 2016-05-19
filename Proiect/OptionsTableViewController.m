@@ -51,7 +51,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,12 +65,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Name"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    NSString *title = [NSString stringWithFormat:@"Option %ld %ld", (long)indexPath.section, indexPath.row];
-    cell.textLabel.text = title;
+    //NSString *title = [NSString stringWithFormat:@"Option %ld %ld", (long)indexPath.section, indexPath.row];
+    //cell.textLabel.text = title;
     if (indexPath.row == 1) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.textLabel.text = @"Enable Notifications";
     }
-    
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.text = @"Reset Score";
+    }
     return cell;
 }
 
@@ -124,6 +129,20 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
             
+    }
+    else
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Validating Misclick" message:@"Are you sure you want to continue" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            //Nothing
+        }];
+        [alertController addAction:alertAction];
+        
+        alertAction = [UIAlertAction actionWithTitle:@"Complete Sacrifice" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            PROUserDefaultsInstance.score = 0;
+        }];
+        [alertController addAction:alertAction];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 

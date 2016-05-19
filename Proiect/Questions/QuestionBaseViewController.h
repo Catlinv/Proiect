@@ -17,6 +17,7 @@
 //Protected
 
 - (void) didAnswerCorrectly;
+- (void) hideWorkingUI;
 
 @property (strong, nonatomic) IBOutlet UIView *questionWorkingView;
 

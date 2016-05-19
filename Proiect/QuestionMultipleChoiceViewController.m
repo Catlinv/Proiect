@@ -26,19 +26,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if (![self.question.isSolved boolValue])
     [self setupButtons];
 }
 
 #pragma mark - Private Methods
 
 - (BOOL)checkAnswer:(UIButton*)button {
-    if ([button.titleLabel.text isEqualToString:[self.question returnAnswer]])
-    {
-        self.question.isSolved = @(YES);
-        return YES;
-    }
-    return NO;
+    return [button.titleLabel.text isEqualToString:[self.question returnAnswer]];
 }
 
 #pragma mark - Actions

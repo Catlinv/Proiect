@@ -10,9 +10,10 @@
 #import "PROOption.h"
 
 typedef NS_ENUM (NSInteger, PROQuestionType) {
+    PROQuestionTypeLocation,
     PROQuestionTypeTextInput,
     PROQuestionTypeMultipleChoice,
-    PROQuestionTypeLocation
+    PROQuestionTypeSolved
 };
 
 @interface PROQuestion : NSObject

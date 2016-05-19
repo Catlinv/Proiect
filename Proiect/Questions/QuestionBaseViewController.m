@@ -8,6 +8,7 @@
 
 #import "QuestionBaseViewController.h"
 #import "Question+CoreDataProperties.h"
+#import "ViewController.h"
 
 @interface QuestionBaseViewController () <UITextFieldDelegate>
 
@@ -27,13 +28,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self assignQuestion];
-    self.answerTextField.delegate = self;
-    self.view.backgroundColor = [UIColor blueColor];
+    if (![self.question.isSolved boolValue]){
+        self.view.backgroundColor = [UIColor blueColor];
+        self.answerTextField.delegate = self;
+    }
+    else
+        [self presentSolvedScreen];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self prepareScreen];
 }
 
@@ -51,28 +55,33 @@
     [self assignQuestion];
 }
 
-#pragma mark - Public Methods
+#pragma mark - Protected Methods
 
 - (void) didAnswerCorrectly {
-    
-    self.view.backgroundColor = [UIColor greenColor];
-    PROUserDefaultsInstance.score++;
-    self.answerDescriptionTextView.hidden = NO;
+
+    [self presentSolvedScreen];
+    if (![self.question.isSolved boolValue])
+        PROUserDefaultsInstance.score++;
     self.question.isSolved = @(1);
-    if ([self.question.type integerValue] != PROQuestionTypeLocation)
-        [self.answerLabel setHidden:NO];
+}
+
+- (void)hideWorkingUI {
+    self.answerTextField.hidden = YES;
 }
 
 #pragma mark - Private Methods
 
+- (void) presentSolvedScreen {
+    self.view.backgroundColor = [UIColor greenColor];
+    self.answerDescriptionTextView.hidden = NO;
+    [self hideWorkingUI];
+    if ([self.question.type integerValue] != PROQuestionTypeLocation)
+        [self.answerLabel setHidden:NO];
+}
+
 - (BOOL)checkAnswer {
     
-    if ([[self.answerTextField.text lowercaseString]isEqualToString: [[self.question returnAnswer] lowercaseString]])
-    {
-        self.question.isSolved = @(YES);
-        return YES;   
-    }
-    return NO;
+    return [[self.answerTextField.text lowercaseString]isEqualToString: [[self.question returnAnswer] lowercaseString]];
 }
 
 - (void)assignQuestion {
@@ -83,25 +92,25 @@
 
 
 - (void)prepareScreen {
-    switch ([self.question.type integerValue]) {
-        case PROQuestionTypeTextInput:
-            //Do nothing
+        switch ([self.question.type integerValue]) {
+            case PROQuestionTypeTextInput:
+                //Do nothing
             break;
-        case PROQuestionTypeMultipleChoice:{
-            self.answerTextField.hidden = YES;
-            //self.descriptionAnswerConstraint.priority = 250;
-            //self.descriptonQuestionConstraint.priority = 750;
+            case PROQuestionTypeMultipleChoice:{
+                self.answerTextField.hidden = YES;
+                //self.descriptionAnswerConstraint.priority = 250;
+                //self.descriptonQuestionConstraint.priority = 750;
             break;
-        }
-        case PROQuestionTypeLocation:{
-            self.answerTextField.hidden = YES;
-            self.descriptionAnswerConstraint.priority = 250;
-            self.descriptonQuestionConstraint.priority = 750;
+            }
+            case PROQuestionTypeLocation:{
+                self.answerTextField.hidden = YES;
+                self.descriptionAnswerConstraint.priority = 250;
+                self.descriptonQuestionConstraint.priority = 750;
             break;
         }
         default:
             break;
-    }
+        }
 }
 
 #pragma mark - UITextFieldDelefgateMethods
@@ -122,6 +131,9 @@
 #pragma mark - Actions
 
 - (IBAction)didTapBackButton:(id)sender {
+    
+    ViewController *mainVC = (ViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    [mainVC.intrebariScroll reloadData];
     CGRect frame = self.view.frame;
     frame.origin.x = 2 * frame.size.width;
     
