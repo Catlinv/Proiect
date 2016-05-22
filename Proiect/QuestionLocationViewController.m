@@ -51,11 +51,21 @@
         [self didAnswerCorrectly];
         self.distanceLeftLabel.hidden = YES;
     } else {
-                                                                //TODO : (CS) Conversion distance in other method
-        self.distanceLeftLabel.text = [NSString stringWithFormat:@"You have %f meters left", distanceLeft];
+        //TODO : (CS) Conversion distance in other method
+        [self displayDistanceLeft:distanceLeft];
     }
         
     
+}
+
+-(void)displayDistanceLeft:(double)distanceLeft{
+    
+    if (distanceLeft < 1000){
+        self.distanceLeftLabel.text = [NSString stringWithFormat:@"You have %@ meters left", [NSString stringWithFormat:@"%.02f", distanceLeft]];
+    }
+    else{
+        self.distanceLeftLabel.text = [NSString stringWithFormat:@"You have %@ kilometers left", [NSString stringWithFormat:@"%.02f", distanceLeft/1000]];
+    }
 }
 
 #pragma mark - PROLocationDelegate
