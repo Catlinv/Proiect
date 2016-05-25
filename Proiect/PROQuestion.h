@@ -2,7 +2,7 @@
 //  PROQuestion.h
 //  Proiect
 //
-//  Created by OctavF on 19/03/16.
+//  Created by NOTOctavF on 19/03/16.
 //  Copyright © 2016 user. All rights reserved.
 //
 
@@ -15,6 +15,8 @@ typedef NS_ENUM (NSInteger, PROQuestionType) {
     PROQuestionTypeMultipleChoice,
     PROQuestionTypeSolved
 };
+
+@class Question;
 
 @interface PROQuestion : NSObject
 
@@ -31,5 +33,6 @@ typedef NS_ENUM (NSInteger, PROQuestionType) {
 + (instancetype)questionWithDictionary:(NSDictionary*)dictionar;
 
 - (NSString*) returnAnswer;
-
+//TODO: (CS) Implement Question convetor
++ (instancetype)convertQuestionToPROQuestion:(Question *)question;
 @end

@@ -8,6 +8,8 @@
 
 #import "Question.h"
 #import "Option.h"
+#import "PROQuestion.h"
+#import "PROOption.h"
 
 @implementation Question
 
@@ -22,6 +24,16 @@
     self.isSolved = question.isSolved;
     self.isUnlocked = question.isUnlocked;
     self.options = question.options;
+}
+
+- (void) fillQuestionWithPROQuestion:(PROQuestion *)question{
+    self.name = question.name;
+    self.type = question.type;
+    self.longitude = question.longitude;
+    self.extraInfo = question.extraInfo;
+    self.latitude = question.latitude;
+    self.isSolved = question.isSolved;
+    self.isUnlocked = question.isUnlocked;
 }
 
 - (NSString*) returnAnswer {

@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+#define PRODataGathererInstance ([PRODataGatherer sharedInstance])
+
 @class PROQuestion;
 
 @interface PRODataGatherer : NSObject
 
-+ (void)fillCoreData;
-+ (NSArray<PROQuestion *> *)getQuestionsArray;
+@property (strong, nonatomic, readonly) NSArray <PROQuestion *> *questionsArray;
+
++ (PRODataGatherer *)sharedInstance;
+
+- (void)fillCoreData;
 
 @end
