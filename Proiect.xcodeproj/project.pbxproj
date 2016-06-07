@@ -10,6 +10,7 @@
 		581989CE1CE0E52100C541B1 /* PROLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 581989CD1CE0E52100C541B1 /* PROLocationManager.m */; };
 		581989D01CE0E57700C541B1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581989CF1CE0E57700C541B1 /* CoreLocation.framework */; };
 		581989D51CE38E2C00C541B1 /* QuestionLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */; };
+		582E46EB1D071A1500FB1153 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582E46EA1D071A1500FB1153 /* Media.xcassets */; };
 		585C20691CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 585C20681CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m */; };
 		58C86F9A1CECB6B700A62800 /* QuestionDataSet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C86F991CECB6B700A62800 /* QuestionDataSet.plist */; };
 		58C86F9D1CECB93400A62800 /* PRODataGatherer.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C86F9C1CECB93400A62800 /* PRODataGatherer.m */; };
@@ -63,6 +64,7 @@
 		581989CF1CE0E57700C541B1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		581989D21CE38E2C00C541B1 /* QuestionLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionLocationViewController.h; sourceTree = "<group>"; };
 		581989D31CE38E2C00C541B1 /* QuestionLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionLocationViewController.m; sourceTree = "<group>"; };
+		582E46EA1D071A1500FB1153 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		585C20661CEB6C85008B4710 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		585C20671CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionMultipleChoiceViewController.h; sourceTree = "<group>"; };
 		585C20681CEB6E5D008B4710 /* QuestionMultipleChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionMultipleChoiceViewController.m; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				58E67EDD1C7B524F002EE780 /* Questions */,
 				CEDF09E21C10B227001FFA37 /* Main.storyboard */,
 				CEDF09E51C10B227001FFA37 /* Assets.xcassets */,
+				582E46EA1D071A1500FB1153 /* Media.xcassets */,
 				CEDF09E71C10B227001FFA37 /* LaunchScreen.storyboard */,
 				CEDF09EA1C10B227001FFA37 /* Info.plist */,
 				CEDF09D91C10B227001FFA37 /* Supporting Files */,
@@ -403,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582E46EB1D071A1500FB1153 /* Media.xcassets in Resources */,
 				58C86FA21CEE05FA00A62800 /* checkSign.png in Resources */,
 				58C86F9A1CECB6B700A62800 /* QuestionDataSet.plist in Resources */,
 				58C86FA01CEDF2F000A62800 /* compasIcon.jpg in Resources */,

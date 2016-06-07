@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PRODataGatherer.h"
-
+#import "CoreDataManager.h"
 @interface AppDelegate ()
 
 @end
@@ -18,8 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //if (coreDataEmpty)
-    [PRODataGatherer fillCoreData];
+    [PRODataGathererInstance fillCoreData];
     return YES;
 }
 

@@ -8,6 +8,7 @@
 
 #import "PROQuestion.h"
 #import "PROOption.h"
+#import "Question.h"
 
 @implementation PROQuestion
 
@@ -56,6 +57,27 @@
     question.options = mutableSet;
     
     return question;
+}
+
++ (instancetype)convertQuestionToPROQuestion:(Question *)question{
+    PROQuestion *aux = [PROQuestion new];
+    
+    aux.name = question.name;
+    aux.type = question.type;
+    aux.longitude = question.longitude;
+    aux.extraInfo = question.extraInfo;
+    aux.latitude = question.latitude;
+    aux.isSolved = question.isSolved;
+    aux.isUnlocked = question.isUnlocked;
+    
+    NSMutableSet *mutableSet = [NSMutableSet new];
+    
+    for (NSDictionary *optiune in question.options) {
+        [mutableSet addObject:[PROOption optionWithDictionary:optiune]];
+    }
+    aux.options = mutableSet;
+    
+    return aux;
 }
 
 @end

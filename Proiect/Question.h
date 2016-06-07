@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Option;
+@class Option,PROQuestion;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Question : NSManagedObject
 
--(void) fillQuestionWithQuestion:(Question *)question;
-
+- (void) fillQuestionWithQuestion:(Question *)question;
+- (void) fillQuestionWithPROQuestion:(PROQuestion *)question;
 - (NSString*) returnAnswer;
 
 @end

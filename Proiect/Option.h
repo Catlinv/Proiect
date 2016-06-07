@@ -11,9 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class PROOption;
+
 @interface Option : NSManagedObject
 
--(void)fillOptionWithOption:(Option *)option;
+- (void)fillOptionWithOption:(Option *)option;
+- (void)fillOptionWithPROOption:(PROOption *)option;
 
 @end
 

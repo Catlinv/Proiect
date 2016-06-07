@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Question.h"
 #import "Option.h"
+#import "PROQuestion.h"
 
 @interface CoreDataManager ()
 
@@ -20,6 +21,9 @@
 @property (nonatomic, assign) BOOL                          shouldStopCurrentRequest;
 
 @end
+
+#warning YOU FUCKED UP (UpdateCoreData)
+//TODO: (CS) Uptadte CoreData
 
 @implementation CoreDataManager
 
@@ -39,6 +43,17 @@ static CoreDataManager *sharedInstance;
 }
 
 #pragma mark - Public methods
+
+
+- (void)addQuestions:(NSArray<PROQuestion *> *)questionsArray{
+    for (PROQuestion *proQuestion in questionsArray) {
+        [self createQuestionWith:proQuestion];
+    }
+}
+
+//- (void)deleteQuestions:(NSArray<Question *> *)questionsArray{
+//    
+//}
 
 - (void)requestQuestionsAsync {
     __weak CoreDataManager *weakSelf = self;
@@ -83,20 +98,27 @@ static CoreDataManager *sharedInstance;
 
 #pragma mark - Private methods
 
-- (Question *)createQuestionWith:(Question *)question {
+- (Question *)createQuestionWith:(PROQuestion *)question {
     Question *newQuest = [NSEntityDescription insertNewObjectForEntityForName:@"Question" inManagedObjectContext:self.managedObjectContext];
+    NSMutableSet <Option *> *auxSet = [NSMutableSet new];
     
-    [newQuest fillQuestionWithQuestion:question];
+    [newQuest fillQuestionWithPROQuestion:question];
+    
+    for (PROOption *proOption in [question.options allObjects]) {
+        [auxSet addObject:[self createOption:proOption]];
+    }
+    
+    newQuest.options = auxSet;
     
     [self saveContext];
     
     return newQuest;
 }
-//Replace here with Option
-- (Option *)createOption:(Option *)option {
+
+- (Option *)createOption:(PROOption *)option {
     Option *newOption = [NSEntityDescription insertNewObjectForEntityForName:@"Option" inManagedObjectContext:self.managedObjectContext];
     
-    [newOption fillOptionWithOption:option];
+    [newOption fillOptionWithPROOption:option];
     
     [self saveContext];
     

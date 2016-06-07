@@ -6,16 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Proiect/PROLocationManager.m"
-            timestampString = "485355428.883247"
+            filePath = "Proiect/PRODataGatherer.m"
+            timestampString = "487007920.606904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "-locationManager:didUpdateLocations:"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-fillQuestions"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Proiect/PRODataGatherer.m"
+            timestampString = "487007926.726493"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-fillCoreData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

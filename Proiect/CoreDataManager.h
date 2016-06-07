@@ -12,7 +12,7 @@
 
 @protocol CoreDataManagerDelegate;
 
-@class Question;
+@class Question,PROQuestion;
 
 @interface CoreDataManager : NSObject
 
@@ -21,8 +21,8 @@
 + (CoreDataManager *)sharedInstance;
 
 - (void)requestQuestionsAsync;
-- (void)saveQuestions:(NSArray<Question *> *)questionsArray;
-- (void)deleteQuestions:(NSArray<Question *> *)questionsArray;
+- (void)addQuestions:(NSArray<PROQuestion *> *)questionsArray;
+//- (void)deleteQuestions:(NSArray<Question *> *)questionsArray;
 - (void)updateDatabaseState;
 
 @end

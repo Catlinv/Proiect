@@ -49,7 +49,7 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Test nou?</string>
+			<string>Test nou1?</string>
 			<key>type</key>
 			<integer>1</integer>
 			<key>longitude</key>
@@ -92,7 +92,7 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Test nou?</string>
+			<string>Test nou2?</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>longitude</key>

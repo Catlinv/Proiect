@@ -7,10 +7,16 @@
 //
 
 #import "Option.h"
+#import "PROOption.h"
 
 @implementation Option
 
 -(void)fillOptionWithOption:(Option *)option{
+    self.answer = option.answer;
+    self.isAnswer = option.isAnswer;
+}
+
+-(void)fillOptionWithPROOption:(PROOption *)option{
     self.answer = option.answer;
     self.isAnswer = option.isAnswer;
 }
