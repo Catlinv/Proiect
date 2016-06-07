@@ -35,4 +35,5 @@ typedef NS_ENUM (NSInteger, PROQuestionType) {
 - (NSString*) returnAnswer;
 //TODO: (CS) Implement Question convetor
 + (instancetype)convertQuestionToPROQuestion:(Question *)question;
+
 @end

@@ -16,6 +16,9 @@
 
 @property (strong, nonatomic, readwrite) NSArray <PROQuestion *> *questionsArray;
 
+@property (nonatomic, copy) void (^successCompletionBlock)(NSArray<Question *> *);
+@property (nonatomic, copy) void (^failureCompletionBlock)();
+
 @end
 
 @implementation PRODataGatherer
@@ -35,7 +38,8 @@ static PRODataGatherer *sharedInstance;
 #pragma mark - Public Methods
 
 - (void)fillCoreData {
-    if (1){
+    __weak PRODataGatherer *welf = self;
+    self.failureCompletionBlock = ^(){
         NSString *filePath =[[NSBundle mainBundle] pathForResource:kFileName ofType:@"plist"];
         NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
         NSArray *value = [plistDict objectForKey:@"QuestionsArray"];
@@ -43,36 +47,51 @@ static PRODataGatherer *sharedInstance;
         for (NSDictionary *question in value)
         {
             PROQuestion *aux = [PROQuestion questionWithDictionary:question] ;
-        
+            
             [auxArray addObject:aux];
         }
         [CoreDataManagerInstance addQuestions:auxArray];
-        self.questionsArray = auxArray;
-    }
+        welf.questionsArray = auxArray;
+    };
+    
+    [CoreDataManagerInstance setDelegate:self];
+    [CoreDataManagerInstance requestQuestionsAsync];
 }
 
 - (void)fillQuestions{
-    [CoreDataManagerInstance setDelegate:self];
-    [CoreDataManagerInstance requestQuestionsAsync];
-    
-    
-}
-
-#pragma mark - CoreDataManagerDelegate
-
-- (void)coreDataManagerDidFailDueToErrorCode:(NSError *)error{
-    
-}
-
-- (void)coreDataManagerDidRetreiveResults:(NSArray<Question *> *)resultsArray{
-    if (resultsArray.count != 0) {
+    __weak PRODataGatherer *welf = self;
+    self.successCompletionBlock = ^(NSArray<Question *> *resultsArray){
         NSMutableArray <PROQuestion *> *auxArray = [NSMutableArray new];
         for (Question *question in resultsArray) {
             [auxArray addObject:[PROQuestion convertQuestionToPROQuestion:question]];
         }
         //TODO: (CS) MAKE ANOTHER FUCKING DELEGATE FML AT HOME (at least try)
         //Hints: ViewController is the delegate
-        self.questionsArray = auxArray;
+        welf.questionsArray = auxArray;
+        
+        if (welf.delegate && [welf.delegate respondsToSelector:@selector(dataGathererDidFinishFilling:)]) {
+            [welf.delegate dataGathererDidFinishFilling:welf];
+        }
+    };
+    [CoreDataManagerInstance setDelegate:self];
+    [CoreDataManagerInstance requestQuestionsAsync];
+}
+
+#pragma mark - CoreDataManagerDelegate
+
+- (void)coreDataManagerDidFailDueToErrorCode:(NSError *)error{
+    if (self.failureCompletionBlock)
+        self.failureCompletionBlock();
+}
+
+- (void)coreDataManagerDidRetreiveResults:(NSArray<Question *> *)resultsArray{
+    if (resultsArray.count != 0) {
+        if (self.successCompletionBlock)
+            self.successCompletionBlock(resultsArray);
+    }
+    else {
+        if (self.failureCompletionBlock)
+            self.failureCompletionBlock();
     }
 }
 

@@ -15,7 +15,7 @@
 
 const CGFloat kMinImageHeight = 64.0;
 
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, PRODataGathererDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *statsLabel;
 //@property (weak, nonatomic) IBOutlet UICollectionView *intrebariScroll;
@@ -25,6 +25,8 @@ const CGFloat kMinImageHeight = 64.0;
 @property (nonatomic, strong) NSDictionary *images;
 @property (nonatomic, assign) CGFloat maxImageHeight;
 @property (nonatomic, assign) CGFloat prevScrollOffsetY;
+
+@property (nonatomic, strong) PRODataGatherer* dataGatherer;
 
 @end
 
@@ -41,11 +43,7 @@ const CGFloat kMinImageHeight = 64.0;
     self.i = 0;
     self.prevScrollOffsetY = 0;
     self.statsLabel.text = [@(self.i) stringValue];
-    self.images = @{ @(PROQuestionTypeLocation):[UIImage imageNamed:@"compasIcon.jpg"],
-                     @(PROQuestionTypeTextInput):[UIImage imageNamed:@"compasIcon.jpg"],
-                     @(PROQuestionTypeMultipleChoice):[UIImage imageNamed:@"compasIcon.jpg"],
-                     @(PROQuestionTypeSolved):[UIImage imageNamed:@"checkSign.png"]
-                   };
+    [self setupPRODataGatherer];
     self.intrebariScroll.dataSource = self;
     self.intrebariScroll.delegate = self;
     self.maxImageHeight = self.view.frame.size.height / 2.0;
@@ -57,6 +55,8 @@ const CGFloat kMinImageHeight = 64.0;
     self.statsLabel.text = [NSString stringWithFormat:@"%li",(long)PROUserDefaultsInstance.score];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDefaultsValueChanged:) name:kPROUserDefaultsValueChangedNotification  object:nil];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -115,12 +115,12 @@ const CGFloat kMinImageHeight = 64.0;
 #pragma mark - UICollectionViewDataSource Methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [[PRODataGatherer getQuestionsArray] count];
+    return [[PRODataGathererInstance questionsArray] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Orice" forIndexPath:indexPath];
-    PROQuestion *tester = [[PRODataGatherer getQuestionsArray] objectAtIndex:indexPath.row];
+    PROQuestion *tester = [[PRODataGathererInstance questionsArray] objectAtIndex:indexPath.row];
     UIImageView *imageView;
     if (cell.contentView.subviews.count){
         imageView = [cell.contentView.subviews firstObject];
@@ -132,27 +132,63 @@ const CGFloat kMinImageHeight = 64.0;
         [cell.contentView addSubview:imageView];
     }
     
-    imageView.image = [self.images objectForKey:tester.type];
-    imageView = nil;
-    
-    if (cell.contentView.subviews.count > 1){
-        if ([tester.isSolved boolValue]){
-        imageView = [cell.contentView.subviews objectAtIndex:1];
-        }
-    }
-    else {
-        if ([tester.isSolved boolValue]) {
-        imageView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [cell.contentView addSubview:imageView];
-        }
-    }
-    
-    imageView.image = [self.images objectForKey:@(PROQuestionTypeSolved)];
+    imageView.image = [self imageForQuestion:tester];
     
     return cell;
 }
+
+#pragma mark - Private Methods
+
+- (void)setupPRODataGatherer{
+    
+    PRODataGathererInstance.delegate = self;
+    [PRODataGathererInstance fillQuestions];
+}
+
+- (UIImage *) imageForQuestion:(PROQuestion *)question {
+    UIImage *image = nil;
+    NSString *imageName;
+    
+    //TODO: (CS) Complete Images
+    switch ([question.type integerValue]) {
+        case PROQuestionTypeLocation:
+            if ([question.isSolved boolValue]) {
+                imageName = @"";
+            }
+            else
+                imageName = @"";
+            break;
+        case PROQuestionTypeTextInput:
+            if ([question.isSolved boolValue]) {
+                imageName = @"TextInputGreen";
+            }
+            else
+                imageName = @"";
+                break;
+        case PROQuestionTypeMultipleChoice:
+            if ([question.isSolved boolValue]) {
+                imageName = @"";
+            }
+            else
+                imageName = @"";
+                break;
+        default:
+            break;
+    }
+    image = [UIImage imageNamed:imageName];
+    return image;
+}
+
+#pragma mark - PRODataGathererDelegate Methods
+
+- (void)dataGathererDidFinishFilling:(PRODataGatherer *)dataGatherer {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.intrebariScroll reloadData];
+    });
+}
+
+
+
 
 #pragma mark - UICollectionViewDelgate Methods
 
@@ -195,7 +231,7 @@ const CGFloat kMinImageHeight = 64.0;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     int index = indexPath.row % 3;
     PROQuestion *tester =[PROQuestion new];
-    tester = [[PRODataGatherer getQuestionsArray] objectAtIndex:indexPath.row];
+    tester = [[PRODataGathererInstance questionsArray] objectAtIndex:indexPath.row];
 //    tester.name = @"Test?";
 //    tester.extraInfo = @"This is just a test";
 //    tester.longitude = @(46);

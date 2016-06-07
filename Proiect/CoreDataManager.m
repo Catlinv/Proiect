@@ -22,6 +22,9 @@
 
 @end
 
+#warning YOU FUCKED UP (UpdateCoreData)
+//TODO: (CS) Uptadte CoreData
+
 @implementation CoreDataManager
 
 static CoreDataManager *sharedInstance;
@@ -40,6 +43,7 @@ static CoreDataManager *sharedInstance;
 }
 
 #pragma mark - Public methods
+
 
 - (void)addQuestions:(NSArray<PROQuestion *> *)questionsArray{
     for (PROQuestion *proQuestion in questionsArray) {
@@ -110,7 +114,7 @@ static CoreDataManager *sharedInstance;
     
     return newQuest;
 }
-//Replace here with Option
+
 - (Option *)createOption:(PROOption *)option {
     Option *newOption = [NSEntityDescription insertNewObjectForEntityForName:@"Option" inManagedObjectContext:self.managedObjectContext];
     
